@@ -1,0 +1,286 @@
+*,
+html {
+	box-sizing: border-box;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	font-family: 'Montserrat', sans-serif;
+	font-size: 15px;
+	font-weight: 600;
+	min-width: 320px;
+	border-radius: 55px;
+	color: #dbdbdb;
+	background-image: url('../images/bg.png');
+	background-repeat: no-repeat;
+	object-fit: cover;
+	background-size: 100%;
+	min-height: 100vh;
+}
+
+.container {
+	padding: 0 15px;
+}
+
+input {
+	outline: none;
+	border: none;
+}
+
+li {
+	list-style: none;
+	color: inherit;
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
+	cursor: pointer;
+	outline: none;
+}
+
+a,
+button,
+input,
+textarea {
+	-webkit-tap-highlight-color: transparent;
+	-webkit-user-select: none;
+	user-select: none;
+}
+
+button {
+	outline: none;
+	border: none;
+	background: none;
+	cursor: pointer;
+}
+
+.header {
+	
+  padding: 10px 0 35px 0;
+}
+
+.header__inner {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+.header__left {
+	display: flex;
+	align-items: center;
+}
+.header__left-img {
+	width: 43px;
+	height: 49px;
+	margin-right: 10px;
+}
+
+.header__content-welcome {
+	font-weight: 300;
+}
+
+.info {
+	margin-bottom: 40px;
+}
+
+.info__items {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	text-align: center;
+}
+
+.info__item {
+	width: 104px;
+}
+
+.info__item-text {
+	color: #7f7f7f;
+	text-align: center;
+	font-family: Inter;
+	font-size: 13px;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+	margin-bottom: 8px;
+}
+
+.info__item-num {
+	color: #dbdbdb;
+	font-family: Inter;
+	font-size: 15px;
+	font-weight: 700;
+	line-height: normal;
+	padding: 11px 0;
+	border-radius: 36px;
+	border: 1px solid #ffb340;
+	background: rgba(0, 0, 0, 0.28);
+	backdrop-filter: blur(8.199999809265137px);
+	background-image: url('../images/num-decor.png');
+	background-repeat: no-repeat;
+}
+
+.balance {
+	margin-bottom: 28px;
+}
+
+.balance__inner {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.balance__img {
+	width: 37px;
+	height: 46px;
+}
+
+.balance__text {
+	color: #d4d4d4;
+	text-align: center;
+	font-family: Inter;
+	font-size: 40px;
+	font-style: normal;
+	font-weight: 700;
+	line-height: normal;
+	margin-left: 15px;
+}
+
+.tap {
+	display: flex;
+	justify-content: center;
+	margin: 0 auto;
+}
+
+.tap__chick-img {
+	width: 310px;
+	height: 310px;
+	border-radius: 326px;
+	border: 3px solid #fba31d;
+	background: #000;
+	box-shadow: 0px 4px 61px 0px rgba(255, 190, 92, 0.64) inset,
+		0px 0px 90px 0px #fba31d;
+}
+
+.get {
+	padding-top: 45px;
+	margin-bottom: 45px;
+}
+
+.get__inner {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+.get__energy {
+	display: flex;
+	align-items: center;
+}
+.get__energy-img {
+	margin-right: 15px;
+}
+.get__energy-num {
+	color: #d4d4d4;
+	font-family: Inter;
+	font-size: 18px;
+	font-style: normal;
+	font-weight: 700;
+	line-height: normal;
+}
+
+.get__energy-num span {
+	padding: 0 4px;
+}
+
+.get__boost {
+	display: flex;
+	align-items: center;
+}
+.get__boost-img {
+	margin-right: 9px;
+}
+.get__boost-text {
+	color: #d4d4d4;
+	text-align: center;
+	font-family: Inter;
+	font-size: 18px;
+	font-style: normal;
+	font-weight: 700;
+	line-height: normal;
+}
+
+.menu {
+	margin-bottom: 8px;
+	position: fixed;
+	left: 0;
+	right: 0;
+}
+.menu__list {
+	display: flex;
+	justify-content: center;
+	align-items: end;
+	padding-left: 0;
+}
+
+.menu__list li + li {
+	margin-left: 30px;
+}
+
+.menu__list-link--svg {
+	padding: 11px 15px;
+	border-radius: 21px;
+	background: #1f1f1f;
+	display: block;
+	max-width: 60px;
+	height: 50px;
+}
+
+.menu__list-link {
+	color: #8c8c8c;
+	text-align: center;
+	font-family: Inter;
+	font-size: 10px;
+	font-style: normal;
+	font-weight: 600;
+	line-height: normal;
+}
+.menu__list-link--text {
+	display: block;
+	color: #8c8c8c;
+	text-align: center;
+	font-family: Inter;
+	font-size: 10px;
+	font-style: normal;
+	font-weight: 600;
+	line-height: normal;
+	text-align: center;
+	padding-top: 6px;
+}
+
+.menu__list-item:focus .path,
+.menu__list-item:active .path {
+	fill: #F99F15;
+}
+
+.menu__list-item:focus .menu__list-link--text,
+.menu__list-item:active .menu__list-link--text {
+	color: #F99F15;
+}
+
+.menu__list-item:last-child{
+	position: relative;
+}
+
+.menu__list-item:last-child::after{
+	content: "";
+	position: absolute;
+	width: 10px;
+	height: 10px;
+	background: #F99F15;
+	border-radius: 50%;
+	top: 0;
+	right: 2px;
+}

@@ -29,12 +29,11 @@ body {
 	touch-action: none;
 } */
 body {
-  -webkit-user-select: none; /* Safari */
-  -moz-user-select: none;    /* Firefox */
-  -ms-user-select: none;     /* IE10+/Edge */
-  user-select: none;         /* Стандартный синтаксис */
+	-webkit-user-select: none; /* Safari */
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* IE10+/Edge */
+	user-select: none; /* Стандартный синтаксис */
 }
-
 
 input {
 	outline: none;
@@ -159,7 +158,7 @@ button {
 }
 
 .user__timer {
-  margin-bottom: 120px;
+	margin-bottom: 120px;
 }
 .user__timer-text {
 	color: #606060;
@@ -206,6 +205,9 @@ button {
 	display: block;
 	max-width: 60px;
 	height: 50px;
+	border-radius: 21px;
+	background: rgba(120, 120, 120, 0.32);
+	backdrop-filter: blur(3.5px);
 }
 
 .menu__list-link {
@@ -236,8 +238,8 @@ button {
 	fill: #f99f15;
 }
 
-.menu__list-item:focus .menu__list-link--text,
-.menu__list-item:active .menu__list-link--text {
+.menu__list-item:focus .menu__list-text,
+.menu__list-item:active .menu__list-text {
 	color: #f99f15;
 }
 

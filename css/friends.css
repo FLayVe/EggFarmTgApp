@@ -30,10 +30,10 @@ body {
 } */
 
 body {
-  -webkit-user-select: none; /* Safari */
-  -moz-user-select: none;    /* Firefox */
-  -ms-user-select: none;     /* IE10+/Edge */
-  user-select: none;         /* Стандартный синтаксис */
+	-webkit-user-select: none; /* Safari */
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* IE10+/Edge */
+	user-select: none; /* Стандартный синтаксис */
 }
 
 input {
@@ -94,6 +94,9 @@ button {
 	display: block;
 	max-width: 60px;
 	height: 50px;
+	border-radius: 21px;
+	background: rgba(120, 120, 120, 0.32);
+	backdrop-filter: blur(3.5px);
 }
 
 .menu__list-link {
@@ -244,10 +247,10 @@ button {
 	background: #101010;
 }
 .friends__svg {
-  transform: translateY(-40px);
+	transform: translateY(-40px);
 	fill: #000;
 	stroke-width: 1px;
 	stroke: #fba31d;
-  display: flex;
-  justify-content: center;
+	display: flex;
+	justify-content: center;
 }

@@ -62,72 +62,18 @@ button {
 	cursor: pointer;
 }
 
-.header {
-	padding: 10px 0 35px 0;
-}
-
-.header__inner {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-}
-.header__left {
-	display: flex;
-	align-items: center;
-}
-.header__left-img {
-	width: 43px;
-	height: 49px;
-	margin-right: 10px;
-}
-
-.header__content-welcome {
-	font-weight: 300;
-}
-
-.info {
-	margin-bottom: 40px;
-}
-
-.info__items {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	text-align: center;
-}
-
-.info__item {
-	width: 104px;
-}
-
-.info__item-text {
-	color: #7f7f7f;
-	text-align: center;
-	font-family: Inter;
-	font-size: 13px;
-	font-style: normal;
-	font-weight: 500;
-	line-height: normal;
-	margin-bottom: 8px;
-}
-
-.info__item-num {
-	color: #dbdbdb;
-	font-family: Inter;
-	font-size: 15px;
-	font-weight: 700;
-	line-height: normal;
-	padding: 11px 0;
-	border-radius: 36px;
-	border: 1px solid #ffb340;
-	background: rgba(0, 0, 0, 0.28);
-	backdrop-filter: blur(8.199999809265137px);
-	background-image: url('../images/num-decor.png');
-	background-repeat: no-repeat;
-}
-
 .balance {
-	margin-bottom: 28px;
+	margin-bottom: 37px;
+	margin-top: 15px;
+}
+
+.balance__descr {
+	color: #787878;
+	text-align: center;
+	font-family: Montserrat;
+	font-size: 16px;
+	font-weight: 500;
+	margin-bottom: 6px;
 }
 
 .balance__inner {
@@ -152,67 +98,116 @@ button {
 	margin-left: 15px;
 }
 
-.tap {
+.mine {
+	padding-bottom: 27px;
+}
+
+.mine__item {
 	display: flex;
-	justify-content: center;
-	margin: 0 auto;
-}
-
-.tap__chick-img {
-	width: 310px;
-	height: 310px;
-	border-radius: 326px;
-	border: 3px solid #fba31d;
-	background: #000;
-	box-shadow: 0px 4px 61px 0px rgba(255, 190, 92, 0.64) inset,
-		0px 0px 90px 0px #fba31d;
-}
-
-.get {
-	padding-top: 45px;
-	margin-bottom: 120px;
-}
-
-.get__inner {
-	display: flex;
-	align-items: center;
 	justify-content: space-between;
+	align-items: center;
+	padding: 11px 24px 11px 13px;
+	border-radius: 20px;
+	border: 1px solid #fba31d;
+	background: rgba(0, 0, 0, 0.02);
+	box-shadow: 0px 0px 51.3px -13px rgba(251, 163, 29, 0.43) inset,
+		0px 0px 76.2px 1px rgba(255, 168, 0, 0.17);
+	backdrop-filter: blur(3.5px);
+	transition: all 0.3s;
 }
-.get__energy {
+
+.mine__item:hover,
+.mine__item:focus {
+	box-shadow: 0px 4px 70px 0px #fba31d inset;
+}
+
+.mine__item + .mine__item {
+	margin-top: 27px;
+}
+
+.mine__item-left {
 	display: flex;
 	align-items: center;
 }
-.get__energy-img {
-	margin-right: 15px;
+
+.mine__item-img svg {
+	margin-right: 13px;
+	position: relative;
+	transform: translate(7px);
+	bottom: -2px;
 }
-.get__energy-num {
-	color: #d4d4d4;
-	font-family: Inter;
-	font-size: 18px;
-	font-style: normal;
-	font-weight: 700;
-	line-height: normal;
+.mine__item-img {
+	margin-right: 13px;
 }
 
-.get__energy-num span {
-	padding: 0 4px;
+.mine__item-img::after {
+	content: '';
+	position: absolute;
+	background-image: url('../images/mine-circle.svg');
+	width: 42px;
+	height: 42px;
+	left: 13px;
+	top: 8px;
+	z-index: -1;
 }
 
-.get__boost {
-	display: flex;
-	align-items: center;
-}
-.get__boost-img {
-	margin-right: 9px;
-}
-.get__boost-text {
-	color: #d4d4d4;
+.mine__item-title {
+	color: #bebebe;
 	text-align: center;
-	font-family: Inter;
-	font-size: 18px;
+	font-family: Montserrat;
+	font-size: 16px;
 	font-style: normal;
 	font-weight: 700;
 	line-height: normal;
+	margin-bottom: 2px;
+}
+.mine__item-nums {
+	display: flex;
+	align-items: center;
+}
+.mine__item-all {
+	color: #c3801b;
+	text-align: center;
+	font-family: Montserrat;
+	font-size: 12px;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+	padding-right: 15px;
+	position: relative;
+}
+
+.mine__item-all::after {
+	content: '';
+	position: absolute;
+	border-radius: 10px;
+	width: 10px;
+	height: 1px;
+	background: #656565;
+	right: 0;
+	top: 7px;
+	transform: translateX(50%);
+}
+
+.mine__item-gain {
+	color: #656565;
+	text-align: center;
+	font-family: Montserrat;
+	font-size: 13px;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+	padding-left: 15px;
+}
+.mine__level {
+	color: #6e6e6e;
+	text-align: center;
+	font-family: Montserrat;
+	font-size: 20px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+  padding-bottom: 90px;
 }
 
 .menu {
@@ -232,7 +227,6 @@ button {
 .menu__list li + li {
 	margin-left: 30px;
 }
-
 .menu__list-svg {
 	padding: 11px 15px;
 	border-radius: 21px;

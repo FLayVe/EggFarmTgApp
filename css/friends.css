@@ -253,4 +253,5 @@ button {
 	stroke: #fba31d;
 	display: flex;
 	justify-content: center;
+	padding-bottom: 10px;
 }

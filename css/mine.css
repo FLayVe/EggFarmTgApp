@@ -24,10 +24,10 @@ body {
 .container {
 	padding: 0 15px;
 }
-html,
+/* html,
 body {
 	touch-action: none;
-}
+} */
 
 input {
 	outline: none;

@@ -7,10 +7,10 @@ html {
 	scroll-behavior: smooth;
 }
 
-html,
+/* html,
 body {
 	touch-action: none;
-}
+} */
 
 body {
 	font-family: 'Montserrat', sans-serif;

@@ -122,7 +122,7 @@ button {
 	padding-top: 6px;
 }
 
-.menu__list-item:focus .path,
+/* .menu__list-item:focus .path,
 .menu__list-item:active .path {
 	fill: #f99f15;
 }
@@ -130,7 +130,7 @@ button {
 .menu__list-item:focus .menu__list-link--text,
 .menu__list-item:active .menu__list-link--text {
 	color: #f99f15;
-}
+} */
 
 .menu__list-item:last-child {
 	position: relative;

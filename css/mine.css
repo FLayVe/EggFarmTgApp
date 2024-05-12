@@ -70,7 +70,7 @@ button {
 }
 
 .balance {
-	margin-bottom: 37px;
+	margin-bottom: 30px;
 	margin-top: 15px;
 }
 
@@ -121,6 +121,7 @@ button {
 		0px 0px 76.2px 1px rgba(255, 168, 0, 0.17);
 	backdrop-filter: blur(3.5px);
 	transition: all 0.3s;
+	height: 64px;
 }
 
 .mine__item:hover,
@@ -134,7 +135,7 @@ button {
 }
 
 .mine__item + .mine__item {
-	margin-top: 27px;
+	margin-top: 22px;
 }
 
 .mine__item-left {
@@ -159,7 +160,7 @@ button {
 	width: 42px;
 	height: 42px;
 	left: 13px;
-	top: 8px;
+	top: 10px;
 	z-index: -1;
 }
 
@@ -173,6 +174,14 @@ button {
 	line-height: normal;
 	margin-bottom: 2px;
 }
+
+.mine__item-title hr{
+	display: inline-block;
+	width: 21px;
+	margin: 4px 8px 4px 8px;
+	height: 1px;
+}
+
 .mine__item-nums {
 	display: flex;
 	align-items: center;

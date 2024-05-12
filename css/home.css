@@ -159,6 +159,16 @@ button {
 	margin-left: 15px;
 }
 
+@media (max-width: 375px) {
+	.tap__chick-img {
+		max-width: 290px;
+		max-height: 290px;
+	}
+	.info__item {
+		width: 95px;
+	}
+}
+
 .tap {
 	display: flex;
 	justify-content: center;
@@ -173,6 +183,7 @@ button {
 	background: #000;
 	box-shadow: 0px 4px 61px 0px rgba(255, 190, 92, 0.64) inset,
 		0px 0px 90px 0px #fba31d;
+	/* padding: 5px; */
 }
 
 .get {

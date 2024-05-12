@@ -104,12 +104,14 @@ button {
 .user__img {
 	position: relative;
 	width: 39px;
-	height: 39px;
+	height: 40px;
 }
 .user__img-egg {
 	position: absolute;
-	left: 8px;
+	left: 8.5px;
 	top: 5px;
+	width: 22px;
+	height: 27px;
 }
 .user__num {
 	margin-left: 14px;

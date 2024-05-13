@@ -132,7 +132,7 @@ button {
 	box-shadow: 0px 0px 96.5px -3px rgba(251, 163, 29, 0.43) inset,
 		0px 0px 76.2px 1px rgba(255, 168, 0, 0.17);
 	backdrop-filter: blur(3.5px);
-} 
+}
 .mine__item-hov--block {
 	transition: all 0s ease-in-out;
 	border-radius: 20px;
@@ -141,7 +141,7 @@ button {
 	box-shadow: 0px 0px 96.5px -3px rgba(251, 163, 29, 0.43) inset,
 		0px 0px 76.2px 1px rgba(255, 168, 0, 0.17);
 	backdrop-filter: blur(3.5px);
-} 
+}
 
 .mine__item + .mine__item {
 	margin-top: 22px;
@@ -306,14 +306,14 @@ button {
 }
 
 .overlay {
-    position: fixed; 
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5); 
-    z-index: 9; 
-    display: none; 
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.5);
+	z-index: 9;
+	display: none;
 }
 
 .popup-grain,
@@ -322,6 +322,7 @@ button {
 .popup-trainer,
 .popup-elixir {
 	position: fixed;
+	display: none;
 	right: 0;
 	left: 0;
 	padding: 17px 0 31px;
@@ -332,8 +333,14 @@ button {
 	bottom: -3px;
 	border-radius: 39px 39px 0px 0px;
 	border: 2px solid #fba21d;
+	transition: all 0.3s;
 	transform: translateY(100%);
+}
+
+.popup{
+	animation: none;
 	transition: all .3s;
+	
 }
 
 .popup-btn {
@@ -343,15 +350,25 @@ button {
 	z-index: 10;
 }
 
-
-.main.grain-open .popup-grain,
-.main.incubators-open .popup-incubators,
-.main.vitamins-open .popup-vitamins,
-.main.trainer-open .popup-trainer,
-.main.elixir-open .popup-elixir{
+.main.grain-open .popup-grain.popup,
+.main.incubators-open .popup-incubators.popup,
+.main.vitamins-open .popup-vitamins.popup,
+.main.trainer-open .popup-trainer.popup,
+.main.elixir-open .popup-elixir.popup {
+	display: block;
 	transform: translateY(0%);
-}	
+	animation: moveUpAstro .3s ease-in-out alternate;
 
+}
+
+@keyframes moveUpAstro {
+	0% {
+		transform: translateY(100%);
+	}
+	100% {
+		transform: translateY(0%);
+	}
+}
 .popup-btn::after {
 	content: '';
 	position: absolute;

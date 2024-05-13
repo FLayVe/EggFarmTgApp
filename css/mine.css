@@ -363,7 +363,7 @@ button {
 .main.elixir-open .popup-elixir.popup {
 	display: block;
 	transform: translateY(0%);
-	animation: moveUpAstro 0s ease-in-out alternate;
+	animation: moveUpAstro -2s ease-in-out alternate;
 
 }
 

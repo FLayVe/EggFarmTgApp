@@ -362,8 +362,8 @@ button {
 .main.trainer-open .popup-trainer.popup,
 .main.elixir-open .popup-elixir.popup {
 	display: block;
-	transform: translateY(0%);
-	animation: moveUpAstro -2s ease-in-out alternate;
+	transform: translateZ(0);
+	animation: moveUpAstro .3s ease-in-out alternate;
 
 }
 
@@ -372,7 +372,7 @@ button {
 		transform: translateY(100%);
 	}
 	100% {
-		transform: translateY(0%);
+		transform: translateZ(0%);
 	}
 }
 .popup-btn::after {

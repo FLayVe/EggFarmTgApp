@@ -354,11 +354,11 @@ button {
 	z-index: 10;
 }
 
-.main.grain-open .popup-grain.popup,
-.main.incubators-open .popup-incubators.popup,
-.main.vitamins-open .popup-vitamins.popup,
-.main.trainer-open .popup-trainer.popup,
-.main.elixir-open .popup-elixir.popup {
+.main.grain-open .popup-grain,
+.main.incubators-open .popup-incubators,
+.main.vitamins-open .popup-vitamins,
+.main.trainer-open .popup-trainer,
+.main.elixir-open .popup-elixir {
 	display: block;
 	transform: translateY(0%);
 	animation: moveUpAstro .3s ease-in-out alternate;

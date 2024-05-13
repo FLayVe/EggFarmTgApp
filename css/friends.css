@@ -158,7 +158,15 @@ button {
 }
 
 .friends__img-1{
-	object-fit: contain;
+	width: 29.1%;
+	object-fit: cover;
+	margin-right: 20px;
+}
+
+.friends__img-2{
+	object-fit: cover;
+	width: 31.15%;
+	margin-right: 10px;
 }
 
 .friends__item + .friends__item {

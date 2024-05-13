@@ -29,19 +29,19 @@ document.addEventListener('DOMContentLoaded', function () {
     setupPopupButton('popup__btn-grain', 'grain', 'grain-open');
     setupElementClick('grain', 'grain-open', 'mine__item-hov--block');
     
-    toggleHover(document.getElementById('incubators'));
-    setupPopupButton('popup__btn-incubators', 'incubators', 'incubators-open');
-    setupElementClick('incubators', 'incubators-open', 'mine__item-hov--block');
+    // toggleHover(document.getElementById('incubators'));
+    // setupPopupButton('popup__btn-incubators', 'incubators', 'incubators-open');
+    // setupElementClick('incubators', 'incubators-open', 'mine__item-hov--block');
     
-    toggleHover(document.getElementById('vitamins'));
-    setupPopupButton('popup__btn-vitamins', 'vitamins', 'vitamins-open');
-    setupElementClick('vitamins', 'vitamins-open', 'mine__item-hov--block');
+    // toggleHover(document.getElementById('vitamins'));
+    // setupPopupButton('popup__btn-vitamins', 'vitamins', 'vitamins-open');
+    // setupElementClick('vitamins', 'vitamins-open', 'mine__item-hov--block');
     
-    toggleHover(document.getElementById('trainer'));
-    setupPopupButton('popup__btn-trainer', 'trainer', 'trainer-open');
-    setupElementClick('trainer', 'trainer-open', 'mine__item-hov--block');
+    // toggleHover(document.getElementById('trainer'));
+    // setupPopupButton('popup__btn-trainer', 'trainer', 'trainer-open');
+    // setupElementClick('trainer', 'trainer-open', 'mine__item-hov--block');
     
-    toggleHover(document.getElementById('elixir'));
-    setupPopupButton('popup__btn-elixir', 'elixir', 'elixir-open');
-    setupElementClick('elixir', 'elixir-open', 'mine__item-hov--block');
+    // toggleHover(document.getElementById('elixir'));
+    // setupPopupButton('popup__btn-elixir', 'elixir', 'elixir-open');
+    // setupElementClick('elixir', 'elixir-open', 'mine__item-hov--block');
 });

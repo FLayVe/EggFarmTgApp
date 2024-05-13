@@ -173,6 +173,10 @@ button {
 	z-index: -1;
 }
 
+.mine__arrow{
+	transform: rotate(-90deg);
+}
+
 .mine__item-title {
 	color: #bebebe;
 	text-align: center;

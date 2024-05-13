@@ -70,7 +70,7 @@ button {
 }
 
 .balance {
-	margin-bottom: 30px;
+	margin-bottom: 25px;
 	margin-top: 15px;
 }
 
@@ -107,6 +107,7 @@ button {
 
 .mine {
 	padding-bottom: 27px;
+	/* transition: all 0s ease-in-out; */
 }
 
 .mine__item {
@@ -120,19 +121,18 @@ button {
 	box-shadow: 0px 0px 51.3px -13px rgba(251, 163, 29, 0.43) inset,
 		0px 0px 76.2px 1px rgba(255, 168, 0, 0.17);
 	backdrop-filter: blur(3.5px);
-	transition: all 0.3s;
 	height: 64px;
 }
 
-.mine__item:hover,
-.mine__item:focus {
+.mine__item-hov {
+	transition: all 0s ease-in-out;
 	border-radius: 20px;
 	border: 1px solid #fba31d;
 	background: rgba(0, 0, 0, 0.02);
 	box-shadow: 0px 0px 96.5px -3px rgba(251, 163, 29, 0.43) inset,
 		0px 0px 76.2px 1px rgba(255, 168, 0, 0.17);
 	backdrop-filter: blur(3.5px);
-}
+} 
 
 .mine__item + .mine__item {
 	margin-top: 22px;
@@ -147,7 +147,7 @@ button {
 	margin-right: 13px;
 	position: relative;
 	transform: translate(7px);
-	bottom: -2px;
+	bottom: -1px;
 }
 .mine__item-img {
 	margin-right: 13px;
@@ -175,7 +175,7 @@ button {
 	margin-bottom: 2px;
 }
 
-.mine__item-title hr{
+.mine__item-title hr {
 	display: inline-block;
 	width: 21px;
 	margin: 4px 8px 4px 8px;
@@ -265,7 +265,6 @@ button {
 	text-align: center;
 	font-family: Inter;
 	font-size: 10px;
-	font-style: normal;
 	font-weight: 600;
 	line-height: normal;
 	z-index: 10;
@@ -276,7 +275,6 @@ button {
 	text-align: center;
 	font-family: Inter;
 	font-size: 10px;
-	font-style: normal;
 	font-weight: 600;
 	line-height: normal;
 	text-align: center;
@@ -296,4 +294,166 @@ button {
 	border-radius: 50%;
 	top: 0;
 	right: 2px;
+}
+
+.overlay {
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); 
+    z-index: 9; 
+    display: none; 
+}
+
+.popup-grain,
+.popup-incubators,
+.popup-vitamins,
+.popup-trainer,
+.popup-elixir {
+	position: fixed;
+	right: 0;
+	left: 0;
+	padding: 17px 0 31px;
+	border-radius: 37px 37px 0px 0px;
+	background: url('../images/popup-bg.png') lightgray 50% / cover no-repeat;
+	z-index: 10;
+	margin: 0 17px;
+	bottom: -3px;
+	border-radius: 39px 39px 0px 0px;
+	border: 2px solid #fba21d;
+	transform: translateY(100%);
+	transition: all .3s;
+}
+
+.popup-btn {
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	z-index: 10;
+}
+
+
+.main.grain-open .popup-grain,
+.main.incubators-open .popup-incubators,
+.main.vitamins-open .popup-vitamins,
+.main.trainer-open .popup-trainer,
+.main.elixir-open .popup-elixir{
+	transform: translateY(0%);
+}	
+
+.popup-btn::after {
+	content: '';
+	position: absolute;
+	right: 0;
+	top: 0;
+	background-image: url('../images/popup-circle.svg');
+	object-fit: cover;
+	z-index: -1;
+	width: 66px;
+	height: 66px;
+	right: -17px;
+	top: -26px;
+}
+
+.popup__img {
+	display: block;
+	margin-bottom: 31px;
+	left: 50%;
+	transform: translateX(-40%);
+	position: relative;
+	max-width: 42px;
+}
+.popup__img::after {
+	content: '';
+	position: absolute;
+	background-image: url('../images/mine-circle.svg');
+	width: 42px;
+	height: 42px;
+	left: -7px;
+	top: -7px;
+	z-index: -1;
+}
+.popup__title {
+	color: #bebebe;
+	text-align: center;
+	font-family: Montserrat;
+	font-size: 24px;
+	font-style: normal;
+	font-weight: 700;
+	line-height: normal;
+	margin-bottom: 19px;
+}
+.popup__nums {
+	margin-bottom: 51px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.popup__all {
+	color: #c3801b;
+	text-align: center;
+	font-family: Montserrat;
+	font-size: 12px;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+	padding-right: 15px;
+	position: relative;
+}
+.popup__all::after {
+	content: '';
+	position: absolute;
+	border-radius: 10px;
+	width: 10px;
+	height: 1px;
+	background: #656565;
+	right: 0;
+	top: 7px;
+	transform: translateX(50%);
+}
+.popup__gain {
+	color: #656565;
+	text-align: center;
+	font-family: Montserrat;
+	font-size: 13px;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+	padding-left: 15px;
+}
+
+.popup__booster {
+	display: flex;
+	justify-content: center;
+}
+
+.popup__booster-btn {
+	display: inline-block;
+	border-radius: 20px;
+	border: 1px solid #fba31d;
+	background: rgba(0, 0, 0, 0.02);
+	box-shadow: 0px 0px 51.3px -13px rgba(251, 163, 29, 0.43) inset,
+		0px 0px 76.2px 1px rgba(255, 168, 0, 0.17);
+	backdrop-filter: blur(3.5px);
+	color: #d9d5cf;
+	text-align: center;
+	font-family: Montserrat;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 600;
+	line-height: normal;
+	padding: 8px 62px;
+	margin-bottom: 25px;
+}
+
+.popup__level {
+	color: #656565;
+	text-align: center;
+	font-family: Montserrat;
+	font-size: 15px;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
 }

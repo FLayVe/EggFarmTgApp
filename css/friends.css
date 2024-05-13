@@ -157,6 +157,10 @@ button {
 	backdrop-filter: blur(2px);
 }
 
+.friends__img-1{
+	object-fit: contain;
+}
+
 .friends__item + .friends__item {
 	margin-top: 20px;
 }

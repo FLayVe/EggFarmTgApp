@@ -133,6 +133,15 @@ button {
 		0px 0px 76.2px 1px rgba(255, 168, 0, 0.17);
 	backdrop-filter: blur(3.5px);
 } 
+.mine__item-hov--block {
+	transition: all 0s ease-in-out;
+	border-radius: 20px;
+	border: 1px solid #fba31d;
+	background: rgba(0, 0, 0, 0.02);
+	box-shadow: 0px 0px 96.5px -3px rgba(251, 163, 29, 0.43) inset,
+		0px 0px 76.2px 1px rgba(255, 168, 0, 0.17);
+	backdrop-filter: blur(3.5px);
+} 
 
 .mine__item + .mine__item {
 	margin-top: 22px;

@@ -323,7 +323,6 @@ button {
 
 .popup {
 	position: fixed;
-	display: none;
 	right: 0;
 	left: 0;
 	padding: 17px 0 31px;
@@ -352,23 +351,21 @@ button {
 .main.popup-open .popup {
 	display: block;
 	transform: translateZ(0);
-	animation: moveUpAstro .3s ease-in-out alternate;
+	/* animation: moveUpAstro .3s ease-in-out alternate; */
 
 }
 
-@keyframes moveUpAstro {
+/* @keyframes moveUpAstro {
 	0% {
 		transform: translateY(100%);
 	}
 	100% {
 		transform: translateZ(0%);
 	}
-}
+} */
 .popup-btn::after {
 	content: '';
 	position: absolute;
-	right: 0;
-	top: 0;
 	background-image: url('../images/popup-circle.svg');
 	object-fit: cover;
 	z-index: -1;

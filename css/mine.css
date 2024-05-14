@@ -321,11 +321,7 @@ button {
 	display: none;
 }
 
-.popup-grain,
-.popup-incubators,
-.popup-vitamins,
-.popup-trainer,
-.popup-elixir {
+.popup {
 	position: fixed;
 	display: none;
 	right: 0;
@@ -341,13 +337,10 @@ button {
 	border: 2px solid #fba21d;
 	transition: all 0.3s;
 	transform: translateY(100%);
-}
-
-.popup{
 	animation: none;
 	transition: all .3s;
-	
 }
+
 
 .popup-btn {
 	position: absolute;
@@ -356,11 +349,7 @@ button {
 	z-index: 10;
 }
 
-.main.grain-open .popup-grain.popup,
-.main.incubators-open .popup-incubators.popup,
-.main.vitamins-open .popup-vitamins.popup,
-.main.trainer-open .popup-trainer.popup,
-.main.elixir-open .popup-elixir.popup {
+.main.popup-open .popup {
 	display: block;
 	transform: translateZ(0);
 	animation: moveUpAstro .3s ease-in-out alternate;

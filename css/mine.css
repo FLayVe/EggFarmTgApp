@@ -334,7 +334,7 @@ button {
 	bottom: -3px;
 	border-radius: 39px 39px 0px 0px;
 	border: 2px solid #fba21d;
-	transform: translateX(-100%);
+	transform: translateY(100%);
 	animation: none;
 	transition: transform .3s;
 }

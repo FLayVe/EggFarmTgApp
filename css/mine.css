@@ -334,10 +334,9 @@ button {
 	bottom: -3px;
 	border-radius: 39px 39px 0px 0px;
 	border: 2px solid #fba21d;
-	transition: all 0.3s;
 	transform: translateY(100%);
 	animation: none;
-	transition: all .3s;
+	transition: transform .3s;
 }
 
 
@@ -349,20 +348,9 @@ button {
 }
 
 .main.popup-open .popup {
-	display: block;
 	transform: translateZ(0);
-	/* animation: moveUpAstro .3s ease-in-out alternate; */
-
 }
 
-/* @keyframes moveUpAstro {
-	0% {
-		transform: translateY(100%);
-	}
-	100% {
-		transform: translateZ(0%);
-	}
-} */
 .popup-btn::after {
 	content: '';
 	position: absolute;

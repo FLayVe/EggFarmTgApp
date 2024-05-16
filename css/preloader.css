@@ -1,0 +1,146 @@
+*,
+html {
+	box-sizing: border-box;
+}
+
+html {
+	scroll-behavior: smooth;
+	overflow: hidden;
+}
+
+body {
+	min-width: 320px;
+	border-radius: 55px;
+	background-color: #000;
+	background-size: 100%;
+	min-height: 100%;
+}
+
+.container {
+	padding: 0 15px;
+}
+html,
+body {
+	touch-action: none;
+}
+
+body {
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+input {
+	outline: none;
+	border: none;
+}
+
+li {
+	list-style: none;
+	color: inherit;
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
+	cursor: pointer;
+	outline: none;
+}
+
+a,
+button,
+input,
+textarea {
+	-webkit-tap-highlight-color: transparent;
+	-webkit-user-select: none;
+	user-select: none;
+}
+
+button {
+	outline: none;
+	border: none;
+	background: none;
+	cursor: pointer;
+}
+
+.preloader__inner {
+	position: relative;
+}
+
+.logo {
+	display: block;
+	margin: 0 auto 43px;
+	max-width: 366px;
+	height: 314px;
+	transform: translateY(55%);
+}
+
+.preloader {
+	display: flex;
+	align-items: center;
+	border-radius: 38px;
+	position: absolute;
+	top: 60%;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+.preloader__wrapper::after {
+	content: '';
+	position: absolute;
+	background-image: url('../images/pre-decor.png');
+	background-repeat: no-repeat;
+	width: 462px;
+	height: 462px;
+	border-radius: 462px;
+	background: #444;
+	filter: blur(215.3000030517578px);
+	top: -35%;
+	left: -25%;
+}
+
+.preloader__wrapper::before {
+	content: '';
+	position: absolute;
+	background-image: url('../images/pre-decor.png');
+	background-repeat: no-repeat;
+	width: 462px;
+	height: 462px;
+	border-radius: 462px;
+	background: #444;
+	filter: blur(215.3000030517578px);
+	bottom: -35%;
+	left: 25%;
+}
+
+.loader-border {
+	width: 211px;
+	height: 15px;
+	border-radius: 16px;
+	border: 1px solid #cfcdc8;
+	box-shadow: 0px 0px 7.2px 0px #fff;
+}
+
+.loader {
+	position: absolute;
+	display: block;
+	border-radius: 16px;
+  margin: 0 3px;
+	padding: 3px;
+	width: 205px;
+	height: 9px;
+	background: #f99f15;
+	box-shadow: 0px 0px 2.3px 1px #fff inset;
+	animation: loader_anim 1.7s linear infinite;
+  justify-self: left;
+}
+
+@keyframes loader_anim {
+	0% {
+		width: 0;
+	}
+	100% {
+		width: 100%;
+	}
+}

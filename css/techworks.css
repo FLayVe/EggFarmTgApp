@@ -15,11 +15,14 @@ body {
 	background-color: #0d0d0d;
 	background-size: 100%;
 	min-height: 100%;
+	background-image: url('../images/techworks.svg');
+	background-repeat: no-repeat;
 }
 
 .container {
 	padding: 0 15px;
 }
+
 html,
 body {
 	touch-action: none;
@@ -66,22 +69,17 @@ button {
 }
 
 .techworks__inner {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;	
+	align-items: center;
+
 }
 
-/* .techworks__title::before{
-  content: "";
-  position: absolute;
-  background-image: url('../images/tech-1.svg');
-  background-repeat: no-repeat;
-  object-fit: cover;
-  width: 482px;
-  height: 293px;
-  top: -20%;
-  left: -5%;
-} */
+.techworks__img{
+	width: 323px;
+	height: 310px;
+}
 
 .techworks__title {
   text-align: center;

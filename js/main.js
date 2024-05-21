@@ -97,4 +97,44 @@ document.addEventListener('DOMContentLoaded', function () {
 	})
 
 	setupPopupButton('popup__btn', 'myOverlay', 'popup-open', elements)
+
+	// Add event listener for header__inner links
+	document.querySelectorAll('.header__inner').forEach(link => {
+		link.addEventListener('click', function () {
+			// Remove the active class from the currently active section
+			sections.forEach(section => section.classList.remove('active'))
+
+			// Add the active class to the user section
+			const userSection = document.getElementById('user')
+			if (userSection) {
+				userSection.classList.add('active')
+			}
+
+			// Remove the active class from all buttons
+			buttons.forEach(button => button.classList.remove('active'))
+
+			// Specifically remove the active class from the home button to remove yellow color
+			const homeButton = document.querySelector('.home-btn')
+			if (homeButton) {
+				homeButton.classList.remove('active')
+			}
+		})
+	})
+
+	// Add event listener for get__boost and get__energy links
+	document.querySelectorAll('.get__boost, .get__energy').forEach(link => {
+		link.addEventListener('click', function () {
+			// Remove the active class from the currently active section
+			sections.forEach(section => section.classList.remove('active'))
+
+			// Add the active class to the boost section
+			const boostSection = document.getElementById('boost')
+			if (boostSection) {
+				boostSection.classList.add('active')
+			}
+
+			// Remove the active class from all buttons
+			buttons.forEach(button => button.classList.remove('active'))
+		})
+	})
 })

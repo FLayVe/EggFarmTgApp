@@ -77,11 +77,98 @@ button {
 	display: block;
 }
 
-/* HOME//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+/* PRELOADER//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
-.home {
-	/* display: none; */
+.preloader__wrapper{
+	position: absolute;
+	display: flex;
+	justify-content: center;
+	top: 50%;
+	/* transform: translateY(-10%); */
+	left: 50%;
+	transform: translateX(20%);
 }
+
+.logo {
+	display: block;
+	margin-bottom: 43px;
+	max-width: 366px;
+	height: 314px;
+
+}
+
+.preloader {
+	display: flex;
+	align-items: center;
+	border-radius: 38px;
+	position: absolute;
+	/* top: 60%;
+	left: 50%;
+	transform: translateX(-50%); */
+	bottom: 0;
+}
+
+
+.preloader__wrapper::after {
+	content: '';
+	position: absolute;
+	background-image: url('../images/pre-decor.png');
+	background-repeat: no-repeat;
+	width: 462px;
+	height: 462px;
+	border-radius: 462px;
+	background: #444;
+	filter: blur(215.3000030517578px);
+	top: -35%;
+	left: -25%;
+}
+
+.preloader__wrapper::before {
+	content: '';
+	position: absolute;
+	background-image: url('../images/pre-decor.png');
+	background-repeat: no-repeat;
+	width: 462px;
+	height: 462px;
+	border-radius: 462px;
+	background: #444;
+	filter: blur(215.3000030517578px);
+	bottom: -35%;
+	left: 25%;
+}
+
+.loader-border {
+	width: 211px;
+	height: 15px;
+	border-radius: 16px;
+	border: 1px solid #cfcdc8;
+	box-shadow: 0px 0px 7.2px 0px #fff;
+}
+
+.loader {
+	position: absolute;
+	display: block;
+	border-radius: 16px;
+  margin: 0 3px;
+	padding: 3px;
+	width: 205px;
+	height: 9px;
+	background: #f99f15;
+	box-shadow: 0px 0px 2.3px 1px #fff inset;
+	animation: loader_anim 1.7s linear infinite;
+  justify-self: left;
+}
+
+@keyframes loader_anim {
+	0% {
+		width: 0;
+	}
+	100% {
+		width: 100%;
+	}
+}
+
+/* HOME//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
 .header {
 	padding: 10px 0 20px 0;
@@ -287,8 +374,6 @@ button {
 
 .mine {
 	padding-bottom: 27px;
-	/* display: none; */
-	/* transition: all 0s ease-in-out; */
 }
 
 .mine__item {
@@ -583,10 +668,6 @@ button {
 
 /* FRIEDNS///////////////////////////////////////////////////////////////////////////////////////////////// */
 
-.friends {
-	/* display: none; */
-}
-
 .friends__title {
 	color: #c0c0c0;
 	text-align: center;
@@ -703,10 +784,6 @@ button {
 
 /* TASKS////////////////////////////////////////////////////////////////////////////////////////////////// */
 
-.tasks {
-	/* display: none; */
-}
-
 .tasks__info {
 	text-align: center;
 	stroke-width: 1;
@@ -724,9 +801,6 @@ button {
 
 /* USER////////////////////////////////////////////////////////////////////////////////////////////////// */
 
-.user {
-	/* display: none; */
-}
 .user__content {
 	padding-top: 23px;
 	text-align: center;
@@ -843,15 +917,11 @@ button {
 
 /* BOOST////////////////////////////////////////////////////////////////////////////////////////////////// */
 
-.boost {
-	/* display: none; */
-}
-
 .boost__title {
 	color: #c5c5c5;
 	text-align: center;
 	font-family: Montserrat, sans-serif;
-	font-size: 38px;
+	font-size: 35px;
 	font-weight: 700;
 	margin-bottom: 28px;
 }
@@ -912,10 +982,6 @@ button {
 }
 
 /* TECHWORKS////////////////////////////////////////////////////////////////////////////////////////////////// */
-
-.techworks {
-	/* display: none; */
-}
 
 .techworks__inner {
 	display: flex;

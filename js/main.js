@@ -74,7 +74,6 @@ document.addEventListener('DOMContentLoaded', function () {
 		button.addEventListener('click', () => handleButtonClick(button))
 	})
 
-	// Set initial active states for 'home' section
 	handleButtonClick(document.querySelector('.home-btn'))
 
 	const elements = [
@@ -98,43 +97,39 @@ document.addEventListener('DOMContentLoaded', function () {
 
 	setupPopupButton('popup__btn', 'myOverlay', 'popup-open', elements)
 
-	// Add event listener for header__inner links
+	function handleLinkClick(targetId) {
+		sections.forEach(section => section.classList.remove('active'))
+
+		buttons.forEach(button => button.classList.remove('active'))
+		content.forEach(div => div.classList.remove('active'))
+
+		const homeButton = document.querySelector('.home-btn')
+		const homeText = document.querySelector('.home-text')
+		if (homeButton) homeButton.classList.remove('active')
+		if (homeText) homeText.classList.remove('active')
+
+		const targetSection = document.getElementById(targetId)
+		if (targetSection) targetSection.classList.add('active')
+		paths.forEach(path => {
+			path.classList.remove('active-path')
+			path.classList.remove('home-path')
+		})
+		paths2.forEach(path => {
+			path.classList.remove('active-path')
+			path.classList.remove('home-path-2')
+		})
+	}
+
 	document.querySelectorAll('.header__inner').forEach(link => {
 		link.addEventListener('click', function () {
-			// Remove the active class from the currently active section
-			sections.forEach(section => section.classList.remove('active'))
-
-			// Add the active class to the user section
-			const userSection = document.getElementById('user')
-			if (userSection) {
-				userSection.classList.add('active')
-			}
-
-			// Remove the active class from all buttons
-			buttons.forEach(button => button.classList.remove('active'))
-
-			// Specifically remove the active class from the home button to remove yellow color
-			const homeButton = document.querySelector('.home-btn')
-			if (homeButton) {
-				homeButton.classList.remove('active')
-			}
+			handleLinkClick('user')
 		})
 	})
 
-	// Add event listener for get__boost and get__energy links
+
 	document.querySelectorAll('.get__boost, .get__energy').forEach(link => {
 		link.addEventListener('click', function () {
-			// Remove the active class from the currently active section
-			sections.forEach(section => section.classList.remove('active'))
-
-			// Add the active class to the boost section
-			const boostSection = document.getElementById('boost')
-			if (boostSection) {
-				boostSection.classList.add('active')
-			}
-
-			// Remove the active class from all buttons
-			buttons.forEach(button => button.classList.remove('active'))
+			handleLinkClick('boost')
 		})
 	})
 })

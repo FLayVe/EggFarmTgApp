@@ -126,7 +126,6 @@ document.addEventListener('DOMContentLoaded', function () {
 		})
 	})
 
-
 	document.querySelectorAll('.get__boost, .get__energy').forEach(link => {
 		link.addEventListener('click', function () {
 			handleLinkClick('boost')

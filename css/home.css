@@ -79,7 +79,7 @@ button {
 
 /* PRELOADER//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
-.preloader__wrapper{
+.preloader__wrapper {
 	position: absolute;
 	display: flex;
 	justify-content: center;
@@ -94,7 +94,6 @@ button {
 	margin-bottom: 43px;
 	max-width: 366px;
 	height: 314px;
-
 }
 
 .preloader {
@@ -107,7 +106,6 @@ button {
 	transform: translateX(-50%); */
 	bottom: 0;
 }
-
 
 .preloader__wrapper::after {
 	content: '';
@@ -149,14 +147,14 @@ button {
 	position: absolute;
 	display: block;
 	border-radius: 16px;
-  margin: 0 3px;
+	margin: 0 3px;
 	padding: 3px;
 	width: 205px;
 	height: 9px;
 	background: #f99f15;
 	box-shadow: 0px 0px 2.3px 1px #fff inset;
 	animation: loader_anim 1.7s linear infinite;
-  justify-self: left;
+	justify-self: left;
 }
 
 @keyframes loader_anim {
@@ -537,9 +535,8 @@ button {
 	border: 2px solid #fba21d;
 	transform: translateY(100%);
 	animation: none;
-	transition: transform .3s;
+	transition: transform 0.3s;
 }
-
 
 .popup-btn {
 	position: absolute;
@@ -664,7 +661,6 @@ button {
 	font-weight: 500;
 	line-height: normal;
 }
-
 
 /* FRIEDNS///////////////////////////////////////////////////////////////////////////////////////////////// */
 
@@ -1066,7 +1062,7 @@ button {
 	fill: #f99f15;
 }
 
-.menu__list-text.active{
+.menu__list-text.active {
 	color: #f99f15;
 }
 

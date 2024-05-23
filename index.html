@@ -23,18 +23,20 @@
 
 <body>
   <main class="main">
-    <!-- <section class="preloader">
+    <!-- <section class="preloader" id="preloader">
+      <script>
+        window.onload = function () {
+            let preloader = document.getElementById('preloader');
+            preloader.classList.add('hide-preloader');
+            setInterval(function () {
+              preloader.classList.add('preloader-hidden');
+            }, 9990);
+          }
+      </script>
       <div class="container">
         <div class="preloader__wrapper">
-          <script>
-            window.onload = function () {
-              setTimeout(function () {
-                window.location.href = './home.html';
-              }, 1600);
-            };
-          </script>
           <img class="logo" src="./images/preloader.png" alt="">
-          <div class="preloader">
+          <div class="preloader-line">
             <span class="loader-border"></span>
             <span class="loader"></span>
           </div>

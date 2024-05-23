@@ -1,3 +1,12 @@
+document.querySelector('.tap__chick').addEventListener('click', function () {
+	this.classList.add('animate')
+
+	// Після завершення анімації видаляємо клас, щоб можна було анімувати знову
+	setTimeout(() => {
+		this.classList.remove('animate')
+	}, 250) // Час повинен співпадати з часом у transition
+})
+
 function toggleHover(element) {
 	element.addEventListener('mouseover', function () {
 		this.classList.add('mine__item-hov')

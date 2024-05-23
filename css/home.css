@@ -251,6 +251,7 @@ button {
 }
 
 .tap__chick {
+	transition: transform .25 ease-out;
 }
 
 @keyframes coinFlip {
@@ -267,7 +268,7 @@ button {
 }
 
 .tap__chick.animate {
-	animation: coinFlip .25s ease-in;
+	animation: coinFlip .25s ease-out;
 }
 
 .tap__chick-img {

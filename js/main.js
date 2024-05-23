@@ -4,7 +4,7 @@ document.querySelector('.tap__chick').addEventListener('click', function () {
 	// Після завершення анімації видаляємо клас, щоб можна було анімувати знову
 	setTimeout(() => {
 		this.classList.remove('animate')
-	}, 50) // Час повинен співпадати з часом у transition
+	}, 30) // Час повинен співпадати з часом у transition
 })
 
 function toggleHover(element) {

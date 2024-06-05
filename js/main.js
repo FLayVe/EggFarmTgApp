@@ -1,12 +1,46 @@
 document.addEventListener('DOMContentLoaded', function () {
+	// Cached DOM elements
+	const overlay = document.getElementById('myOverlay')
+	const mainElement = document.querySelector('main')
+	const preloader = document.getElementById('preloader')
+	const menu = document.getElementById('menu')
+	const popupBtn = document.getElementById('popup__btn')
+	const sections = document.querySelectorAll('.page')
+	const buttons = document.querySelectorAll('.menu__btn')
+	const content = document.querySelectorAll('.menu__list-text')
+	const paths = document.querySelectorAll('.path')
+	const paths2 = document.querySelectorAll('.path-2')
+	const tapChick = document.querySelector('.tap__chick')
+	const headerInnerLinks = document.querySelectorAll('.header__inner')
+	const boostLinks = document.querySelectorAll('.get__boost, .get__energy')
+
+	const elements = [
+		'grain',
+		'incubators',
+		'vitamins',
+		'trainer',
+		'elixir',
+		'level',
+	]
+		.map(id => document.getElementById(id))
+		.filter(el => el !== null)
+
+	const buttonMapping = {
+		'home-btn': 'home',
+		'mine-btn': 'mine',
+		'friends-btn': 'friends',
+		'tasks-btn': 'tasks',
+	}
+
 	// Function to handle animation on click
-	document.querySelector('.tap__chick').addEventListener('click', function () {
-		this.classList.add('animate')
-		// Remove class after animation to allow re-animation
-		setTimeout(() => {
-			this.classList.remove('animate')
-		}, 30) // Time should match the transition duration
-	})
+	if (tapChick) {
+		tapChick.addEventListener('click', function () {
+			this.classList.add('animate')
+			setTimeout(() => {
+				this.classList.remove('animate')
+			}, 30)
+		})
+	}
 
 	// Function to toggle hover class
 	function toggleHover(element) {
@@ -19,40 +53,23 @@ document.addEventListener('DOMContentLoaded', function () {
 	}
 
 	// Function to setup element click
-	function setupElementClick(elementId, overlayId, mainClass, itemHoverClass) {
-		const element = document.getElementById(elementId)
+	function setupElementClick(element, overlay, mainClass, itemHoverClass) {
 		element.addEventListener('click', function () {
-			document.getElementById(overlayId).style.display = 'block'
-			document.querySelector('main').classList.add(mainClass)
+			overlay.style.display = 'block'
+			mainElement.classList.add(mainClass)
 			element.classList.add(itemHoverClass)
 		})
 	}
 
 	// Function to setup popup button
-	function setupPopupButton(btnId, overlayId, mainClass, targetElements) {
-		const btn = document.getElementById(btnId)
-		btn.addEventListener('click', function () {
-			document.getElementById(overlayId).style.display = 'none'
-			document.querySelector('main').classList.remove(mainClass)
-			targetElements.forEach(function (elementId) {
-				document
-					.getElementById(elementId)
-					.classList.remove('mine__item-hov--block')
+	if (popupBtn) {
+		popupBtn.addEventListener('click', function () {
+			overlay.style.display = 'none'
+			mainElement.classList.remove('popup-open')
+			elements.forEach(element => {
+				element.classList.remove('mine__item-hov--block')
 			})
 		})
-	}
-
-	const sections = document.querySelectorAll('.page')
-	const buttons = document.querySelectorAll('.menu__btn')
-	const content = document.querySelectorAll('.menu__list-text')
-	const paths = document.querySelectorAll('.path')
-	const paths2 = document.querySelectorAll('.path-2')
-
-	const buttonMapping = {
-		'home-btn': 'home',
-		'mine-btn': 'mine',
-		'friends-btn': 'friends',
-		'tasks-btn': 'tasks',
 	}
 
 	// Function to handle menu button click
@@ -71,12 +88,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
 		for (const [btnClass, sectionId] of Object.entries(buttonMapping)) {
 			if (button.classList.contains(btnClass)) {
-				document.getElementById(sectionId).classList.add('active')
+				const section = document.getElementById(sectionId)
 				const textElement = document.getElementById(`${sectionId}-text`)
-				if (textElement) {
-					textElement.classList.add('active')
-				}
-				break // Exit loop after matching button class is found
+				if (section) section.classList.add('active')
+				if (textElement) textElement.classList.add('active')
+				break
 			}
 		}
 
@@ -91,81 +107,26 @@ document.addEventListener('DOMContentLoaded', function () {
 		}
 	}
 
-	// Adding click event listener to buttons
+	// Adding click event listeners to buttons
 	buttons.forEach(button => {
 		button.addEventListener('click', () => handleButtonClick(button))
 	})
 
 	// Preloader logic
 	window.onload = function () {
-		document.getElementById('preloader').style.display = 'block'
+		preloader.style.display = 'block'
 		setTimeout(function () {
-			handleButtonClick(document.querySelector('.home-btn')) // Default active page
-			document.getElementById('preloader').style.display = 'none'
-			document.getElementById('menu').style.display = 'block'
+			handleButtonClick(document.querySelector('.home-btn'))
+			preloader.style.display = 'none'
+			menu.style.display = 'block'
 		}, 1450)
 	}
-  
+
 	// Setup hover and click for elements
-	document.addEventListener('DOMContentLoaded', () => {
-		const elements = [
-			'grain',
-			'incubators',
-			'vitamins',
-			'trainer',
-			'elixir',
-			'level',
-		]
-
-		const myOverlay = document.getElementById('myOverlay')
-		const popupButton = document.getElementById('popup__btn')
-
-		elements.forEach(elementId => {
-			const element = document.getElementById(elementId)
-			if (element) {
-				toggleHover(element)
-				setupElementClick(
-					element,
-					myOverlay,
-					'popup-open',
-					'mine__item-hov--block'
-				)
-			}
-		})
-
-		if (popupButton) {
-			setupPopupButton(popupButton, myOverlay, 'popup-open', elements)
-		}
+	elements.forEach(element => {
+		toggleHover(element)
+		setupElementClick(element, overlay, 'popup-open', 'mine__item-hov--block')
 	})
-
-	function toggleHover(element) {
-		element.addEventListener('mouseover', () => {
-			element.classList.add('hover')
-		})
-		element.addEventListener('mouseout', () => {
-			element.classList.remove('hover')
-		})
-	}
-
-	function setupElementClick(element, overlay, popupClass, hoverClass) {
-		element.addEventListener('click', () => {
-			element.classList.toggle(hoverClass)
-			overlay.classList.toggle(popupClass)
-		})
-	}
-
-	function setupPopupButton(button, overlay, popupClass, elements) {
-		button.addEventListener('click', () => {
-			overlay.classList.remove(popupClass)
-			elements.forEach(elementId => {
-				const element = document.getElementById(elementId)
-				if (element) {
-					element.classList.remove('mine__item-hov--block')
-				}
-			})
-		})
-	}
-
 
 	// Function to handle link clicks
 	function handleLinkClick(targetId) {
@@ -187,13 +148,13 @@ document.addEventListener('DOMContentLoaded', function () {
 	}
 
 	// Adding click event listeners to links
-	document.querySelectorAll('.header__inner').forEach(link => {
+	headerInnerLinks.forEach(link => {
 		link.addEventListener('click', function () {
 			handleLinkClick('user')
 		})
 	})
 
-	document.querySelectorAll('.get__boost, .get__energy').forEach(link => {
+	boostLinks.forEach(link => {
 		link.addEventListener('click', function () {
 			handleLinkClick('boost')
 		})

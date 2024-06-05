@@ -103,7 +103,7 @@ document.addEventListener('DOMContentLoaded', function () {
 			handleButtonClick(document.querySelector('.home-btn')) // Default active page
 			document.getElementById('preloader').style.display = 'none'
 			document.getElementById('menu').style.display = 'block'
-		}, 1450)
+		}, 1400)
 	}
 
 	// Setup hover and click for elements

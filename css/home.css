@@ -77,26 +77,38 @@ button {
 	display: block;
 }
 
+.menu.active {
+	display: block;
+}
+
 /* PRELOADER//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
 .preloader {
 	position: absolute;
-	top: 50%;
-	transform: translateY(-60%);
+	top: 0;
+	left: 0;
+	/* transform: translateY(-30%); */
+	z-index: 150;
+	overflow: hidden;
 }
 
-#preloader.hide-preloader {
-	animation: hidePreloader 1s;
+.preloader__wrapper {
+	background-color: #000;
+	height: 100vh;
+	overflow: hidden;
 }
 
-#preloader.preloader-hidden {
-	display: none;
+.preloader__inner{
+	position: relative;
+	top: 10%;
 }
+
+
 
 .logo {
 	display: block;
-	top: 0;
-	max-width: 90%;
+	/* padding-top: 150px; */
+	max-width: 85%;
 	margin: 0 auto 43px;
 }
 
@@ -142,7 +154,9 @@ button {
 
 /* HOME//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
-/* .home{} */
+/* .home{
+	display: none;
+} */
 
 .header {
 	padding: 10px 0 20px 0;
@@ -251,7 +265,7 @@ button {
 }
 
 .tap__chick {
-	transition: transform .03s ease-out;
+	transition: transform 0.03s ease-out;
 }
 
 @keyframes coinFlip {
@@ -268,7 +282,7 @@ button {
 }
 
 .tap__chick.animate {
-	animation: coinFlip .03s ease-out;
+	animation: coinFlip 0.03s ease-out;
 }
 
 .tap__chick-img {

@@ -105,28 +105,67 @@ document.addEventListener('DOMContentLoaded', function () {
 			document.getElementById('menu').style.display = 'block'
 		}, 1450)
 	}
-
+  
 	// Setup hover and click for elements
-	const elements = [
-		'grain',
-		'incubators',
-		'vitamins',
-		'trainer',
-		'elixir',
-		'level',
-	]
-	elements.forEach(function (elementId) {
-		const element = document.getElementById(elementId)
-		toggleHover(element)
-		setupElementClick(
-			elementId,
-			'myOverlay',
-			'popup-open',
-			'mine__item-hov--block'
-		)
+	document.addEventListener('DOMContentLoaded', () => {
+		const elements = [
+			'grain',
+			'incubators',
+			'vitamins',
+			'trainer',
+			'elixir',
+			'level',
+		]
+
+		const myOverlay = document.getElementById('myOverlay')
+		const popupButton = document.getElementById('popup__btn')
+
+		elements.forEach(elementId => {
+			const element = document.getElementById(elementId)
+			if (element) {
+				toggleHover(element)
+				setupElementClick(
+					element,
+					myOverlay,
+					'popup-open',
+					'mine__item-hov--block'
+				)
+			}
+		})
+
+		if (popupButton) {
+			setupPopupButton(popupButton, myOverlay, 'popup-open', elements)
+		}
 	})
 
-	setupPopupButton('popup__btn', 'myOverlay', 'popup-open', elements)
+	function toggleHover(element) {
+		element.addEventListener('mouseover', () => {
+			element.classList.add('hover')
+		})
+		element.addEventListener('mouseout', () => {
+			element.classList.remove('hover')
+		})
+	}
+
+	function setupElementClick(element, overlay, popupClass, hoverClass) {
+		element.addEventListener('click', () => {
+			element.classList.toggle(hoverClass)
+			overlay.classList.toggle(popupClass)
+		})
+	}
+
+	function setupPopupButton(button, overlay, popupClass, elements) {
+		button.addEventListener('click', () => {
+			overlay.classList.remove(popupClass)
+			elements.forEach(elementId => {
+				const element = document.getElementById(elementId)
+				if (element) {
+					element.classList.remove('mine__item-hov--block')
+				}
+			})
+		})
+	}
+
 
 	// Function to handle link clicks
 	function handleLinkClick(targetId) {

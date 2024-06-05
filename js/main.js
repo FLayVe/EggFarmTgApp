@@ -1,28 +1,24 @@
-// main.js
 document.addEventListener('DOMContentLoaded', function () {
-	// Функція для обробки анімації на click
+	// Function to handle animation on click
 	document.querySelector('.tap__chick').addEventListener('click', function () {
 		this.classList.add('animate')
-
-		// Після завершення анімації видаляємо клас, щоб можна було анімувати знову
+		// Remove class after animation to allow re-animation
 		setTimeout(() => {
 			this.classList.remove('animate')
-		}, 30) // Час повинен співпадати з часом у transition
+		}, 30) // Time should match the transition duration
 	})
 
-	
-	// Функція для додавання/видалення hover класу
+	// Function to toggle hover class
 	function toggleHover(element) {
 		element.addEventListener('mouseover', function () {
 			this.classList.add('mine__item-hov')
 		})
-
 		element.addEventListener('mouseout', function () {
 			this.classList.remove('mine__item-hov')
 		})
 	}
 
-	// Функція для налаштування натискання на елемент
+	// Function to setup element click
 	function setupElementClick(elementId, overlayId, mainClass, itemHoverClass) {
 		const element = document.getElementById(elementId)
 		element.addEventListener('click', function () {
@@ -32,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		})
 	}
 
-	// Функція для налаштування кнопки попапу
+	// Function to setup popup button
 	function setupPopupButton(btnId, overlayId, mainClass, targetElements) {
 		const btn = document.getElementById(btnId)
 		btn.addEventListener('click', function () {
@@ -52,7 +48,14 @@ document.addEventListener('DOMContentLoaded', function () {
 	const paths = document.querySelectorAll('.path')
 	const paths2 = document.querySelectorAll('.path-2')
 
-	// Функція для обробки натискання на кнопку меню
+	const buttonMapping = {
+		'home-btn': 'home',
+		'mine-btn': 'mine',
+		'friends-btn': 'friends',
+		'tasks-btn': 'tasks',
+	}
+
+	// Function to handle menu button click
 	function handleButtonClick(button) {
 		sections.forEach(section => section.classList.remove('active'))
 		buttons.forEach(btn => btn.classList.remove('active'))
@@ -66,23 +69,16 @@ document.addEventListener('DOMContentLoaded', function () {
 			path.classList.remove('home-path-2')
 		})
 
-		const buttonMapping = {
-			'home-btn': 'home',
-			'mine-btn': 'mine',
-			'friends-btn': 'friends',
-			'tasks-btn': 'tasks',
+		for (const [btnClass, sectionId] of Object.entries(buttonMapping)) {
+			if (button.classList.contains(btnClass)) {
+				document.getElementById(sectionId).classList.add('active')
+				const textElement = document.getElementById(`${sectionId}-text`)
+				if (textElement) {
+					textElement.classList.add('active')
+				}
+				break // Exit loop after matching button class is found
+			}
 		}
-
-		// for (const [btnClass, sectionId] of Object.entries(buttonMapping)) {
-		// 	if (button.classList.contains(btnClass)) {
-		// 		document.getElementById(sectionId).classList.add('active')
-		// 		const textElement = document.getElementById(`${sectionId}-text`)
-		// 		if (textElement) {
-		// 			textElement.classList.add('active')
-		// 		}
-		// 		break
-		// 	}
-		// }
 
 		button.classList.add('active')
 		const pathElement = button.querySelector('.path')
@@ -95,12 +91,22 @@ document.addEventListener('DOMContentLoaded', function () {
 		}
 	}
 
+	// Adding click event listener to buttons
 	buttons.forEach(button => {
 		button.addEventListener('click', () => handleButtonClick(button))
 	})
 
-	handleButtonClick(document.querySelector('.home-btn')) // За замовчуванням відкрита Home сторінка
+	// Preloader logic
+	window.onload = function () {
+		document.getElementById('preloader').style.display = 'block'
+		setTimeout(function () {
+			handleButtonClick(document.querySelector('.home-btn')) // Default active page
+			document.getElementById('preloader').style.display = 'none'
+			document.getElementById('menu').style.display = 'block'
+		}, 1450)
+	}
 
+	// Setup hover and click for elements
 	const elements = [
 		'grain',
 		'incubators',
@@ -122,20 +128,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
 	setupPopupButton('popup__btn', 'myOverlay', 'popup-open', elements)
 
-	// Функція для обробки натискання на посилання
+	// Function to handle link clicks
 	function handleLinkClick(targetId) {
 		sections.forEach(section => section.classList.remove('active'))
-
 		buttons.forEach(button => button.classList.remove('active'))
 		content.forEach(div => div.classList.remove('active'))
 
-		const homeButton = document.querySelector('.home-btn')
-		const homeText = document.querySelector('.home-text')
-		if (homeButton) homeButton.classList.remove('active')
-		if (homeText) homeText.classList.remove('active')
-
 		const targetSection = document.getElementById(targetId)
 		if (targetSection) targetSection.classList.add('active')
+
 		paths.forEach(path => {
 			path.classList.remove('active-path')
 			path.classList.remove('home-path')
@@ -146,6 +147,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		})
 	}
 
+	// Adding click event listeners to links
 	document.querySelectorAll('.header__inner').forEach(link => {
 		link.addEventListener('click', function () {
 			handleLinkClick('user')

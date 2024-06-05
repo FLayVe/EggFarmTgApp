@@ -77,9 +77,13 @@ button {
 	display: block;
 }
 
-.menu.active {
-	display: block;
+.menu {
+	display: none;
 }
+
+/* .menu.active {
+	display: block;
+} */
 
 /* PRELOADER//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
@@ -89,13 +93,15 @@ button {
 	left: 0;
 	/* transform: translateY(-30%); */
 	z-index: 150;
-	overflow: hidden;
+	background: none;
 }
 
 .preloader__wrapper {
 	background-color: #000;
+	background-image: url('../images/preloader-bg.png');
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
 	height: 100vh;
-	overflow: hidden;
 }
 
 .preloader__inner{
@@ -103,11 +109,8 @@ button {
 	top: 10%;
 }
 
-
-
 .logo {
 	display: block;
-	/* padding-top: 150px; */
 	max-width: 85%;
 	margin: 0 auto 43px;
 }
@@ -157,6 +160,10 @@ button {
 /* .home{
 	display: none;
 } */
+
+.home{
+	display: none;
+}
 
 .header {
 	padding: 10px 0 20px 0;

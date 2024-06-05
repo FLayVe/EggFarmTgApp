@@ -26,67 +26,6 @@
 <body>
   <main class="main">
     <section class="preloader" id="preloader">
-      <!-- <script>
-        window.onload = function () {
-            let preloader = document.getElementById('preloader');
-            preloader.classList.add('hide-preloader');
-            setInterval(function () {
-              preloader.classList.add('preloader-hidden');
-            }, 1500);
-          }
-      </script> -->
-      <!-- <script>
-        document.addEventListener('DOMContentLoaded', function () {
-          // Прелоадер
-          setTimeout(function () {
-            document.getElementById('preloader').style.display = 'none'
-            document.getElementById('menu').style.display = 'block'
-
-            // Динамічне завантаження основного скрипту після прелоадера
-            const script = document.createElement('script')
-            script.src = 'main.js' // URL до вашого основного скрипту
-            document.body.appendChild(script)
-          }, 1500) // Затримка у 1.5 секунди
-        })
-      </script> -->
-      <!-- <script>
-        // Додаємо клас для заборони скролінгу під час завантаження
-          document.body.classList.add('no-scroll');
-
-          // Дочекаємось повного завантаження сторінки
-          window.addEventListener('load', function () {
-            // Встановлюємо затримку у 1500 мілісекунд перед зникненням прелоадера
-            setTimeout(function () {
-              // Приховаємо прелоадер
-              var preloader = document.getElementById('preloader');
-              preloader.style.display = 'none';
-
-              // Показуємо контент
-              var content = document.getElementById('content');
-              content.classList.remove('hidden');
-
-              // Дозволяємо скролінг після завантаження контенту
-              document.body.classList.remove('no-scroll');
-            }, 1450); // Затримка 1500 мілісекунд (1.5 секунди)
-          });
-
-
-      </script> -->
-      <script>
-        document.addEventListener('DOMContentLoaded', function () {
-             window.onload = function () {
-            // Відображаємо перлоадер
-            document.getElementById("preloader").style.display = "block";
-
-            // Через 1.5 секунди приховуємо перлоадер і завантажуємо home та menu
-            setTimeout(function () {
-              document.getElementById("preloader").style.display = "none";
-              document.getElementById("home").style.display = "block";
-              document.getElementById("menu").style.display = "block";
-            }, 1500);
-          };
-          })
-      </script>
       <div class="preloader__wrapper">
         <div class="preloader__inner">
           <img class="logo" src="./images/preloader.png" alt="">

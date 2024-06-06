@@ -532,7 +532,7 @@ button {
 }
 
 .popup {
-	position: fixed;
+	position: absolute;
 	right: 0;
 	left: 0;
 	padding: 17px 0 31px;
@@ -544,7 +544,7 @@ button {
 	bottom: -3px;
 	border-radius: 39px 39px 0px 0px;
 	border: 2px solid #fba21d;
-	transform: translateY(100%);
+	transform: translateY(-300%);
 	animation: none;
 	transition: transform 0.3s;
 }
@@ -1023,7 +1023,7 @@ button {
 	text-transform: uppercase;
 }
 
-/* ///////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+/* /////////////////////////////////////////////////////////////////////////////////////////////////////////////  */
 
 .menu {
 	margin-bottom: 8px;
@@ -1032,6 +1032,7 @@ button {
 	right: 0;
 	bottom: 0;
 }
+
 .menu__list {
 	display: flex;
 	justify-content: center;

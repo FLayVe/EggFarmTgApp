@@ -166,7 +166,7 @@ document.addEventListener('DOMContentLoaded', function () {
 	const copyButton = document.getElementById('friends__btn')
 	const link = document.getElementById('friends__link')
 
-	copyButton.addEventListener('click', function () {
+	function copyLinkToClipboard() {
 		const linkHref = link.href
 
 		navigator.clipboard.writeText(linkHref).then(
@@ -178,5 +178,12 @@ document.addEventListener('DOMContentLoaded', function () {
 				console.error('Не вдалося скопіювати посилання: ', err)
 			}
 		)
+	}
+
+	copyButton.addEventListener('click', copyLinkToClipboard)
+	link.addEventListener('click', function (event) {
+		event.preventDefault() // Запобігає переходу за посиланням
+		copyLinkToClipboard()
 	})
 })
+

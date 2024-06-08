@@ -204,21 +204,27 @@ document.addEventListener('DOMContentLoaded', function () {
 document.addEventListener('DOMContentLoaded', function () {
 	const clickableDiv = document.getElementById('clickableDiv')
 	const balanceValue = document.getElementById('balanceValue')
-	let balance = 0
+
+	// Initialize the balance from local storage or set to 0 if none exists
+	let balance = parseInt(localStorage.getItem('balance')) || 0
+	balanceValue.textContent = balance
 
 	clickableDiv.addEventListener('click', function (event) {
-		const number = 5 // Фіксоване значення 5
+		const number = 5 // Fixed increment value
 		balance += number
 		balanceValue.textContent = balance
+		localStorage.setItem('balance', balance) // Save the updated balance to local storage
 
+		// Create and animate the number element
 		const numberElement = document.createElement('div')
 		numberElement.textContent = `+${number}`
 		numberElement.classList.add('number')
+		numberElement.style.position = 'absolute'
 		numberElement.style.left = `${event.clientX - clickableDiv.offsetLeft}px`
 		numberElement.style.top = `${event.clientY - clickableDiv.offsetTop}px`
 		clickableDiv.appendChild(numberElement)
 
-		// Видалення елемента після анімації
+		// Remove the element after animation ends
 		numberElement.addEventListener('animationend', function () {
 			numberElement.remove()
 		})

@@ -220,6 +220,40 @@ button {
 	background-repeat: no-repeat;
 }
 
+#clickableDiv {
+	/* width: 200px; */
+	/* height: 200px; */
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 24px;
+	cursor: pointer;
+	position: relative;
+}
+
+.number {
+	position: absolute;
+	color: #d4d4d4;
+	text-align: center;
+	font-family: Inter;
+	color: #fba31d;
+	font-size: 24px;
+	font-weight: 700;
+	line-height: normal;
+	animation: fadeOut 1s forwards;
+}
+
+@keyframes fadeOut {
+	0% {
+		opacity: 1;
+		transform: translateY(0);
+	}
+	100% {
+		opacity: 0;
+		transform: translateY(-100px);
+	}
+}
+
 .balance {
 	margin-bottom: 28px;
 }
@@ -586,12 +620,12 @@ button {
 	background-color: #000;
 	border: 1px solid black;
 	padding: 5px 10px;
-	border:	rgb(204, 123, 0) 1.5px solid;
+	border: rgb(204, 123, 0) 1.5px solid;
 	border-radius: 15px;
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 	z-index: 1000;
 	opacity: 0;
-  border: 1px solid rgba(204, 123, 0, .4);
+	border: 1px solid rgba(204, 123, 0, 0.4);
 	transition: opacity 0.5s ease-in-out;
 }
 
@@ -599,9 +633,9 @@ button {
 	opacity: 1;
 }
 
-#customAlert p{
+#customAlert p {
 	margin: 0;
-	letter-spacing: .1rem;
+	letter-spacing: 0.1rem;
 	text-transform: uppercase;
 }
 

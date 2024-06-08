@@ -201,5 +201,30 @@ document.addEventListener('DOMContentLoaded', function () {
 	})
 })
 
+document.addEventListener('DOMContentLoaded', function () {
+	const clickableDiv = document.getElementById('clickableDiv')
+	const balanceValue = document.getElementById('balanceValue')
+	let balance = 0
+
+	clickableDiv.addEventListener('click', function (event) {
+		const number = 5 // Фіксоване значення 5
+		balance += number
+		balanceValue.textContent = balance
+
+		const numberElement = document.createElement('div')
+		numberElement.textContent = `+${number}`
+		numberElement.classList.add('number')
+		numberElement.style.left = `${event.clientX - clickableDiv.offsetLeft}px`
+		numberElement.style.top = `${event.clientY - clickableDiv.offsetTop}px`
+		clickableDiv.appendChild(numberElement)
+
+		// Видалення елемента після анімації
+		numberElement.addEventListener('animationend', function () {
+			numberElement.remove()
+		})
+	})
+})
+
+
 
 

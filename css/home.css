@@ -563,13 +563,13 @@ button {
 }
 
 .popup {
-	position: absolute;
+	position: fixed;
 	right: 0;
 	left: 0;
 	padding: 17px 0 31px;
 	background: #000;
 	border-radius: 37px 37px 0px 0px;
-	background: url('../images/popup-bg.png') lightgray 50% / cover no-repeat;
+	/* background: url('../images/popup-bg.png') lightgray 50% / cover no-repeat; */
 	z-index: 10;
 	margin: 0 17px;
 	bottom: -3px;

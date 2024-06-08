@@ -165,25 +165,41 @@ document.addEventListener('DOMContentLoaded', function () {
 document.addEventListener('DOMContentLoaded', function () {
 	const copyButton = document.getElementById('friends__btn')
 	const link = document.getElementById('friends__link')
+	const customAlert = document.getElementById('customAlert')
 
 	function copyLinkToClipboard() {
 		const linkHref = link.href
 
 		navigator.clipboard.writeText(linkHref).then(
 			function () {
-				console.log('Посилання скопійовано до буфера обміну')
-				alert('Посилання скопійовано до буфера обміну')
+				console.log('Link copied')
+				showCustomAlert()
 			},
 			function (err) {
-				console.error('Не вдалося скопіювати посилання: ', err)
+				console.error('Error: ', err)
 			}
 		)
 	}
 
+	function showCustomAlert() {
+		customAlert.classList.remove('hidden')
+		customAlert.classList.add('show')
+		setTimeout(hideCustomAlert, 2000) // Автоматично приховати через 2 секунди
+	}
+
+	function hideCustomAlert() {
+		customAlert.classList.remove('show')
+		setTimeout(function () {
+			customAlert.classList.add('hidden')
+		}, 500) // Затримка, щоб завершити анімацію
+	}
+
 	copyButton.addEventListener('click', copyLinkToClipboard)
 	link.addEventListener('click', function (event) {
-		event.preventDefault() // Запобігає переходу за посиланням
+		event.preventDefault()
 		copyLinkToClipboard()
 	})
 })
+
+
 

@@ -81,7 +81,6 @@ button {
 	display: none;
 }
 
-
 /* PRELOADER//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
 .preloader {
@@ -100,8 +99,7 @@ button {
 	height: 100vh;
 }
 
-.preloader__inner{
-	
+.preloader__inner {
 	position: relative;
 	top: 15%;
 }
@@ -154,8 +152,7 @@ button {
 
 /* HOME//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
-
-.home{
+.home {
 	display: none;
 }
 
@@ -572,6 +569,42 @@ button {
 	top: -26px;
 }
 
+.hidden {
+	display: none;
+}
+
+#customAlert {
+	position: fixed;
+	color: #c0c0c0;
+	font-family: Inter;
+	font-size: 12px;
+	font-style: normal;
+	font-weight: 600;
+	top: 72%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-color: #000;
+	border: 1px solid black;
+	padding: 5px 10px;
+	border:	rgb(204, 123, 0) 1.5px solid;
+	border-radius: 15px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+	z-index: 1000;
+	opacity: 0;
+  border: 1px solid rgba(204, 123, 0, .4);
+	transition: opacity 0.5s ease-in-out;
+}
+
+#customAlert.show {
+	opacity: 1;
+}
+
+#customAlert p{
+	margin: 0;
+	letter-spacing: .1rem;
+	text-transform: uppercase;
+}
+
 .popup__img {
 	display: block;
 	margin-bottom: 31px;
@@ -747,6 +780,7 @@ button {
 }
 
 .friends__label {
+	position: relative;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -755,6 +789,7 @@ button {
 	border: 1px solid #cc7b00;
 	background: rgba(16, 16, 16, 0.3);
 	backdrop-filter: blur(2px);
+	z-index: 100;
 }
 .friends__link {
 	display: block;

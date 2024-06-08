@@ -107,6 +107,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		}
 	}
 
+	
 	// Adding click event listeners to buttons
 	buttons.forEach(button => {
 		button.addEventListener('click', () => handleButtonClick(button))

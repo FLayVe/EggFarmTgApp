@@ -202,34 +202,44 @@ document.addEventListener('DOMContentLoaded', function () {
 })
 
 document.addEventListener('DOMContentLoaded', function () {
-	const clickableDiv = document.getElementById('clickableDiv')
+	const clickableImg = document.getElementById('clickableImg')
 	const balanceValue = document.getElementById('balanceValue')
 
 	// Initialize the balance from local storage or set to 0 if none exists
 	let balance = parseInt(localStorage.getItem('balance')) || 0
 	balanceValue.textContent = balance
 
-	clickableImg.addEventListener('click', function (event) {
+	clickableImg.addEventListener('touchstart', function (event) {
 		const number = 5 // Fixed increment value
-		balance += number
+		balance += event.touches.length * number // Increment balance by number of touches * 5
 		balanceValue.textContent = balance
 		localStorage.setItem('balance', balance) // Save the updated balance to local storage
 
-		// Create and animate the number element
-		const numberElement = document.createElement('div')
-		numberElement.textContent = `+${number}`
-		numberElement.classList.add('number')
-		numberElement.style.position = 'absolute'
-		numberElement.style.left = `${event.clientX - clickableDiv.offsetLeft}px`
-		numberElement.style.top = `${event.clientY - clickableDiv.offsetTop}px`
-		clickableDiv.appendChild(numberElement)
+		Array.from(event.touches).forEach(touch => {
+			// Create and animate the number element for each touch point
+			const numberElement = document.createElement('div')
+			numberElement.textContent = `+${number}`
+			numberElement.classList.add('number')
 
-		// Remove the element after animation ends
-		numberElement.addEventListener('animationend', function () {
-			numberElement.remove()
+			// Calculate the position of the touch relative to the image
+			const rect = clickableImg.getBoundingClientRect()
+			numberElement.style.left = `${touch.clientX - rect.left}px`
+			numberElement.style.top = `${touch.clientY - rect.top}px`
+
+			// Append the number element to the parent container
+			clickableImg.parentElement.appendChild(numberElement)
+
+			// Remove the element after animation ends
+			numberElement.addEventListener('animationend', function () {
+				numberElement.remove()
+			})
 		})
+
+		// Prevent default action to avoid triggering other touch events
+		event.preventDefault()
 	})
 })
+
 
 
 

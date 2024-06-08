@@ -204,17 +204,18 @@ document.addEventListener('DOMContentLoaded', function () {
 document.addEventListener('DOMContentLoaded', function () {
 	const clickableImg = document.getElementById('clickableImg')
 	const balanceValue = document.getElementById('balanceValue')
+	const balanceTextElements = document.querySelectorAll('.balance__text')
 
 	// Initialize the balance from local storage or set to 0 if none exists
 	let balance = parseInt(localStorage.getItem('balance')) || 0
-	balanceValue.textContent = balance
+	updateBalanceDisplay(balance)
 
 	clickableImg.addEventListener('touchstart', function (event) {
 		if (event.touches.length <= 3) {
 			// Check if 1 to 3 fingers are touching the screen
 			const number = 5 // Fixed increment value
 			balance += event.touches.length * number // Increment balance by number of touches * 5
-			balanceValue.textContent = balance
+			updateBalanceDisplay(balance)
 			localStorage.setItem('balance', balance) // Save the updated balance to local storage
 
 			Array.from(event.touches).forEach(touch => {
@@ -241,7 +242,15 @@ document.addEventListener('DOMContentLoaded', function () {
 			event.preventDefault()
 		}
 	})
+
+	function updateBalanceDisplay(balance) {
+		balanceValue.textContent = balance
+		balanceTextElements.forEach(element => {
+			element.textContent = balance
+		})
+	}
 })
+
 
 
 

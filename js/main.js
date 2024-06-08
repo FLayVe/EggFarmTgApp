@@ -209,7 +209,7 @@ document.addEventListener('DOMContentLoaded', function () {
 	let balance = parseInt(localStorage.getItem('balance')) || 0
 	balanceValue.textContent = balance
 
-	clickableDiv.addEventListener('click', function (event) {
+	clickableImg.addEventListener('click', function (event) {
 		const number = 5 // Fixed increment value
 		balance += number
 		balanceValue.textContent = balance

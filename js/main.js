@@ -161,3 +161,22 @@ document.addEventListener('DOMContentLoaded', function () {
 		})
 	})
 })
+
+document.addEventListener('DOMContentLoaded', function () {
+	const copyButton = document.getElementById('friends__btn')
+	const link = document.getElementById('friends__link')
+
+	copyButton.addEventListener('click', function () {
+		const linkHref = link.href
+
+		navigator.clipboard.writeText(linkHref).then(
+			function () {
+				console.log('Посилання скопійовано до буфера обміну')
+				alert('Посилання скопійовано до буфера обміну')
+			},
+			function (err) {
+				console.error('Не вдалося скопіювати посилання: ', err)
+			}
+		)
+	})
+})

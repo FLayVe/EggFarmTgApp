@@ -88,6 +88,41 @@ document.addEventListener('DOMContentLoaded', function () {
 })
 
 document.addEventListener('DOMContentLoaded', function () {
+	const timerElement = document.getElementById('timer')
+
+	// Задаємо початковий час у секундах: 30 днів, 12 годин, 8 хвилин, 39 секунд
+	const initialTimeInSeconds = 28 * 24 * 60 * 60 + 12 * 60 * 60 + 8 * 60 + 39
+	let timeRemaining = initialTimeInSeconds
+
+	function formatTime(seconds) {
+		const days = Math.floor(seconds / (24 * 60 * 60))
+		seconds %= 24 * 60 * 60
+		const hours = Math.floor(seconds / (60 * 60))
+		seconds %= 60 * 60
+		const minutes = Math.floor(seconds / 60)
+		seconds %= 60
+
+		return `${days}d ${hours}h ${minutes}m ${seconds}s`
+	}
+
+	function updateTimer() {
+		timerElement.textContent = formatTime(timeRemaining)
+		if (timeRemaining > 0) {
+			timeRemaining--
+		} else {
+			timeRemaining = initialTimeInSeconds // Перезапуск таймера
+		}
+	}
+
+	setInterval(updateTimer, 1000) // Оновлення таймера кожну секунду
+
+	// Ініціалізуємо таймер відразу
+	updateTimer()
+})
+
+
+
+document.addEventListener('DOMContentLoaded', function () {
 	// Cached DOM elements
 	const overlay = document.getElementById('myOverlay')
 	const mainElement = document.querySelector('main')

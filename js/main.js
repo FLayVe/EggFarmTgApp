@@ -329,6 +329,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
+
+
 document.addEventListener('DOMContentLoaded', function () {
 	const clickableImg = document.getElementById('clickableImg')
 	const balanceValue = document.getElementById('balanceValue')

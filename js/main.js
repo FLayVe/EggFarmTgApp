@@ -1,4 +1,93 @@
 document.addEventListener('DOMContentLoaded', function () {
+	Telegram.WebApp.ready()
+
+	const userData = Telegram.WebApp.initDataUnsafe.user
+	let name
+
+	function updateUserText(selector, text) {
+		const elements = document.querySelectorAll(selector)
+		elements.forEach(element => {
+			element.textContent = text
+		})
+	}
+
+	if (userData) {
+		if (userData.username && userData.username.startsWith('@')) {
+			name = userData.username
+		} else if (userData.first_name) {
+			name = userData.first_name
+		} else {
+			name = 'User'
+		}
+	} else {
+		name = 'User'
+	}
+
+	updateUserText('.user-name', name) || updateUserText('.user-name-2', name)
+
+	const clickableImg = document.getElementById('clickableImg')
+	const balanceValue = document.getElementById('balanceValue')
+	const balanceTextElements = document.querySelectorAll('.balance__text')
+
+	let balance = parseInt(localStorage.getItem('balance')) || 0
+	updateBalanceDisplay(balance)
+
+	clickableImg.addEventListener('touchstart', function (event) {
+		if (event.touches.length <= 3) {
+			const number = 5
+			balance += event.touches.length * number
+			updateBalanceDisplay(balance)
+			localStorage.setItem('balance', balance)
+
+			Array.from(event.touches).forEach(touch => {
+				const numberElement = document.createElement('div')
+				numberElement.textContent = `+${number}`
+				numberElement.classList.add('number')
+
+				const rect = clickableImg.getBoundingClientRect()
+				numberElement.style.left = `${touch.clientX - rect.left}px`
+				numberElement.style.top = `${touch.clientY - rect.top}px`
+
+				clickableImg.parentElement.appendChild(numberElement)
+
+				numberElement.addEventListener('animationend', function () {
+					numberElement.remove()
+				})
+			})
+
+			event.preventDefault()
+		}
+	})
+
+	function updateBalanceDisplay(balance) {
+		const formattedBalance = balance.toLocaleString('en-US').replace(/,/g, ' ')
+		balanceValue.textContent = formattedBalance
+		balanceTextElements.forEach(element => {
+			element.textContent = formattedBalance
+		})
+	}
+
+	function isMobileDevice() {
+		return (
+			typeof window.orientation !== 'undefined' ||
+			navigator.userAgent.indexOf('IEMobile') !== -1
+		)
+	}
+
+	const qrCodeContainer = document.getElementById('qrCode')
+	const contentContainer = document.getElementById('content')
+
+	if (!isMobileDevice()) {
+		qrCodeContainer.style.display = 'block'
+		contentContainer.style.display = 'none'
+
+	} else {
+		qrCodeContainer.style.display = 'none'
+		contentContainer.style.display = 'block'
+	}
+})
+
+document.addEventListener('DOMContentLoaded', function () {
 	// Cached DOM elements
 	const overlay = document.getElementById('myOverlay')
 	const mainElement = document.querySelector('main')
@@ -60,7 +149,6 @@ document.addEventListener('DOMContentLoaded', function () {
 			element.classList.add(itemHoverClass)
 		})
 	}
-	
 
 	// Function to setup popup button
 	if (popupBtn) {
@@ -108,7 +196,6 @@ document.addEventListener('DOMContentLoaded', function () {
 		}
 	}
 
-	
 	// Adding click event listeners to buttons
 	buttons.forEach(button => {
 		button.addEventListener('click', () => handleButtonClick(button))
@@ -202,188 +289,54 @@ document.addEventListener('DOMContentLoaded', function () {
 	})
 })
 
-document.addEventListener('DOMContentLoaded', function () {
-	Telegram.WebApp.ready()
-
-	const userData = Telegram.WebApp.initDataUnsafe.user
-	let name // оголошуємо змінну для збереження імені
-
-	function updateUserText(selector, text) {
-		const elements = document.querySelectorAll(selector)
-		elements.forEach(element => {
-			element.textContent = text
-		})
-	}
-
-	if (userData) {
-		if (userData.username && userData.username.startsWith('@')) {
-			name = userData.username // присвоюємо ім'я з username
-		} else if (userData.first_name) {
-			name = userData.first_name // присвоюємо ім'я з first_name
-		} else {
-			name = 'error' // якщо не вдалося знайти ім'я, присвоюємо 'error'
-		}
-	} else {
-		name = 'error' // якщо немає даних про користувача, присвоюємо 'error'
-	}
-
-	// оновлюємо тексти за допомогою функції updateUserText
-	updateUserText('.user-name', name)
-})
 
 
-document.addEventListener('DOMContentLoaded', function () {
-	Telegram.WebApp.ready()
+// document.addEventListener('DOMContentLoaded', function () {
+// 	const clickableImg = document.getElementById('clickableImg')
+// 	const balanceValue = document.getElementById('balanceValue')
+// 	const balanceTextElements = document.querySelectorAll('.balance__text')
 
-	const userData = Telegram.WebApp.initDataUnsafe.user
-	let name
+// 	// Initialize the balance from local storage or set to 0 if none exists
+// 	let balance = parseInt(localStorage.getItem('balance')) || 0
+// 	updateBalanceDisplay(balance)
 
-	function updateUserText(selector, text) {
-		const elements = document.querySelectorAll(selector)
-		elements.forEach(element => {
-			element.textContent = text
-		})
-	}
+// 	clickableImg.addEventListener('touchstart', function (event) {
+// 		if (event.touches.length <= 3) {
+// 			// Check if 1 to 3 fingers are touching the screen
+// 			const number = 5 // Fixed increment value
+// 			balance += event.touches.length * number // Increment balance by number of touches * 5
+// 			updateBalanceDisplay(balance)
+// 			localStorage.setItem('balance', balance) // Save the updated balance to local storage
 
-	if (userData) {
-		if (userData.username && userData.username.startsWith('@')) {
-			name = userData.username
-		} else if (userData.first_name) {
-			name = userData.first_name
-		} else {
-			name = 'error'
-		}
-	} else {
-		name = 'error'
-	}
+// 			Array.from(event.touches).forEach(touch => {
+// 				// Create and animate the number element for each touch point
+// 				const numberElement = document.createElement('div')
+// 				numberElement.textContent = `+${number}`
+// 				numberElement.classList.add('number')
 
-	updateUserText('.user-name', name)
+// 				// Calculate the position of the touch relative to the image
+// 				const rect = clickableImg.getBoundingClientRect()
+// 				numberElement.style.left = `${touch.clientX - rect.left}px`
+// 				numberElement.style.top = `${touch.clientY - rect.top}px`
 
-	const clickableImg = document.getElementById('clickableImg')
-	const balanceValue = document.getElementById('balanceValue')
-	const balanceTextElements = document.querySelectorAll('.balance__text')
+// 				// Append the number element to the parent container
+// 				clickableImg.parentElement.appendChild(numberElement)
 
-	let balance = parseInt(localStorage.getItem('balance')) || 0
-	updateBalanceDisplay(balance)
+// 				// Remove the element after animation ends
+// 				numberElement.addEventListener('animationend', function () {
+// 					numberElement.remove()
+// 				})
+// 			})
 
-	clickableImg.addEventListener('touchstart', function (event) {
-		if (event.touches.length <= 3) {
-			const number = 5
-			balance += event.touches.length * number
-			updateBalanceDisplay(balance)
-			localStorage.setItem('balance', balance)
+// 			// Prevent default action to avoid triggering other touch events
+// 			event.preventDefault()
+// 		}
+// 	})
 
-			Array.from(event.touches).forEach(touch => {
-				const numberElement = document.createElement('div')
-				numberElement.textContent = `+${number}`
-				numberElement.classList.add('number')
-
-				const rect = clickableImg.getBoundingClientRect()
-				numberElement.style.left = `${touch.clientX - rect.left}px`
-				numberElement.style.top = `${touch.clientY - rect.top}px`
-
-				clickableImg.parentElement.appendChild(numberElement)
-
-				numberElement.addEventListener('animationend', function () {
-					numberElement.remove()
-				})
-			})
-
-			event.preventDefault()
-		}
-	})
-
-	function updateBalanceDisplay(balance) {
-		const formattedBalance = balance.toLocaleString('en-US').replace(/,/g, ' ')
-		balanceValue.textContent = formattedBalance
-		balanceTextElements.forEach(element => {
-			element.textContent = formattedBalance
-		})
-	}
-
-	function isMobileDevice() {
-		return (
-			typeof window.orientation !== 'undefined' ||
-			navigator.userAgent.indexOf('IEMobile') !== -1
-		)
-	}
-
-	const qrCodeContainer = document.getElementById('qrCode')
-	const contentContainer = document.getElementById('content')
-
-	if (!isMobileDevice()) {
-		qrCodeContainer.style.display = 'block'
-		contentContainer.style.display = 'none'
-
-		new QRCode(document.getElementById('qrcode'), {
-			text: 'https://t.me/ChickEggFarmBot/TapEggFarm',
-			width: 256,
-			height: 256,
-		})
-	} else {
-		qrCodeContainer.style.display = 'none'
-		contentContainer.style.display = 'block'
-	}
-})
-
-
-
-
-
-
-document.addEventListener('DOMContentLoaded', function () {
-	const clickableImg = document.getElementById('clickableImg')
-	const balanceValue = document.getElementById('balanceValue')
-	const balanceTextElements = document.querySelectorAll('.balance__text')
-
-	// Initialize the balance from local storage or set to 0 if none exists
-	let balance = parseInt(localStorage.getItem('balance')) || 0
-	updateBalanceDisplay(balance)
-
-	clickableImg.addEventListener('touchstart', function (event) {
-		if (event.touches.length <= 3) {
-			// Check if 1 to 3 fingers are touching the screen
-			const number = 5 // Fixed increment value
-			balance += event.touches.length * number // Increment balance by number of touches * 5
-			updateBalanceDisplay(balance)
-			localStorage.setItem('balance', balance) // Save the updated balance to local storage
-
-			Array.from(event.touches).forEach(touch => {
-				// Create and animate the number element for each touch point
-				const numberElement = document.createElement('div')
-				numberElement.textContent = `+${number}`
-				numberElement.classList.add('number')
-
-				// Calculate the position of the touch relative to the image
-				const rect = clickableImg.getBoundingClientRect()
-				numberElement.style.left = `${touch.clientX - rect.left}px`
-				numberElement.style.top = `${touch.clientY - rect.top}px`
-
-				// Append the number element to the parent container
-				clickableImg.parentElement.appendChild(numberElement)
-
-				// Remove the element after animation ends
-				numberElement.addEventListener('animationend', function () {
-					numberElement.remove()
-				})
-			})
-
-			// Prevent default action to avoid triggering other touch events
-			event.preventDefault()
-		}
-	})
-
-	function updateBalanceDisplay(balance) {
-		balanceValue.textContent = balance
-		balanceTextElements.forEach(element => {
-			element.textContent = balance
-		})
-	}
-})
-
-
-
-
-
-
-
+// 	function updateBalanceDisplay(balance) {
+// 		balanceValue.textContent = balance
+// 		balanceTextElements.forEach(element => {
+// 			element.textContent = balance
+// 		})
+// 	}
+// })

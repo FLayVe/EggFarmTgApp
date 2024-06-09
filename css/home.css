@@ -220,13 +220,49 @@ button {
 	background-repeat: no-repeat;
 }
 
-#qrCode {
-	display: none; /* Початково приховано */
+.qrcode {
+	padding: 50px 15px;
+	position: absolute;
+	z-index: 1000;
+	top: 50%;
+	transform: translateY(-50%);
+	right: 0;
+	left: 0;
+}
+
+.qrcode h2 {
+	color: #c0c0c0;
 	text-align: center;
-	margin-top: 50px;
+	font-family: Inter;
+	font-size: 34px;
+	font-style: normal;
+	font-weight: 700;
+	line-height: normal;
+	margin-bottom: 25px;
+}
+
+.qrCode {
+	display: block;
+	margin-bottom: 20px;
+	max-width: 280px;
+	margin: 0 auto;
+}
+
+.qrcode__link{
+	font-size: 30px;
+}
+
+#qrCode {
+	display: none;
+	text-align: center;
+	
 }
 #qrCode img {
 	max-width: 100%;
+	margin: 0 auto;
+	padding: 15px;
+	border-radius: 15px;
+	border: 4px dashed #eb8006;
 }
 
 #clickableDiv {
@@ -1001,7 +1037,7 @@ button {
 
 /* BOOST////////////////////////////////////////////////////////////////////////////////////////////////// */
 
-.boost{
+.boost {
 	margin-top: 30px;
 }
 

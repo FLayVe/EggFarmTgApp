@@ -259,7 +259,48 @@ document.addEventListener('DOMContentLoaded', function () {
 
 	updateUserText('.user-name', name)
 
-	// Function to detect if the device is mobile
+	const clickableImg = document.getElementById('clickableImg')
+	const balanceValue = document.getElementById('balanceValue')
+	const balanceTextElements = document.querySelectorAll('.balance__text')
+
+	let balance = parseInt(localStorage.getItem('balance')) || 0
+	updateBalanceDisplay(balance)
+
+	clickableImg.addEventListener('touchstart', function (event) {
+		if (event.touches.length <= 3) {
+			const number = 5
+			balance += event.touches.length * number
+			updateBalanceDisplay(balance)
+			localStorage.setItem('balance', balance)
+
+			Array.from(event.touches).forEach(touch => {
+				const numberElement = document.createElement('div')
+				numberElement.textContent = `+${number}`
+				numberElement.classList.add('number')
+
+				const rect = clickableImg.getBoundingClientRect()
+				numberElement.style.left = `${touch.clientX - rect.left}px`
+				numberElement.style.top = `${touch.clientY - rect.top}px`
+
+				clickableImg.parentElement.appendChild(numberElement)
+
+				numberElement.addEventListener('animationend', function () {
+					numberElement.remove()
+				})
+			})
+
+			event.preventDefault()
+		}
+	})
+
+	function updateBalanceDisplay(balance) {
+		const formattedBalance = balance.toLocaleString('en-US').replace(/,/g, ' ')
+		balanceValue.textContent = formattedBalance
+		balanceTextElements.forEach(element => {
+			element.textContent = formattedBalance
+		})
+	}
+
 	function isMobileDevice() {
 		return (
 			typeof window.orientation !== 'undefined' ||
@@ -284,6 +325,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		contentContainer.style.display = 'block'
 	}
 })
+
 
 
 

@@ -232,6 +232,60 @@ document.addEventListener('DOMContentLoaded', function () {
 })
 
 
+document.addEventListener('DOMContentLoaded', function () {
+	Telegram.WebApp.ready()
+
+	const userData = Telegram.WebApp.initDataUnsafe.user
+	let name
+
+	function updateUserText(selector, text) {
+		const elements = document.querySelectorAll(selector)
+		elements.forEach(element => {
+			element.textContent = text
+		})
+	}
+
+	if (userData) {
+		if (userData.username && userData.username.startsWith('@')) {
+			name = userData.username
+		} else if (userData.first_name) {
+			name = userData.first_name
+		} else {
+			name = 'error'
+		}
+	} else {
+		name = 'error'
+	}
+
+	updateUserText('.user-name', name)
+
+	// Function to detect if the device is mobile
+	function isMobileDevice() {
+		return (
+			typeof window.orientation !== 'undefined' ||
+			navigator.userAgent.indexOf('IEMobile') !== -1
+		)
+	}
+
+	const qrCodeContainer = document.getElementById('qrCode')
+	const contentContainer = document.getElementById('content')
+
+	if (!isMobileDevice()) {
+		qrCodeContainer.style.display = 'block'
+		contentContainer.style.display = 'none'
+
+		new QRCode(document.getElementById('qrcode'), {
+			text: 'https://t.me/ChickEggFarmBot/TapEggFarm',
+			width: 256,
+			height: 256,
+		})
+	} else {
+		qrCodeContainer.style.display = 'none'
+		contentContainer.style.display = 'block'
+	}
+})
+
+
 
 document.addEventListener('DOMContentLoaded', function () {
 	const clickableImg = document.getElementById('clickableImg')

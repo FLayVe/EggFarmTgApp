@@ -220,6 +220,15 @@ button {
 	background-repeat: no-repeat;
 }
 
+#qrCode {
+	display: none; /* Початково приховано */
+	text-align: center;
+	margin-top: 50px;
+}
+#qrCode img {
+	max-width: 100%;
+}
+
 #clickableDiv {
 	/* width: 200px; */
 	/* height: 200px; */

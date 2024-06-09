@@ -202,21 +202,38 @@ document.addEventListener('DOMContentLoaded', function () {
 	})
 })
 
-document.addEventListener('DOMContentLoaded', function () {
-	const userNameElement = document.getElementById('user-name')
+document.addEventListener("DOMContentLoaded", function() {
+    Telegram.WebApp.ready();
 
-	// Initialize Telegram Web Apps SDK
-	Telegram.WebApp.ready()
+    const userData = Telegram.WebApp.initDataUnsafe.user;
+    let name; // оголошуємо змінну для збереження імені
 
-	// Get the username from Telegram Web Apps SDK
-	const user = Telegram.WebApp.initDataUnsafe.user
+    function updateUserText(selector, text) {
+        const elements = document.querySelectorAll(selector);
+        elements.forEach(element => {
+            element.textContent = text;
+        });
+    }
 
-	if (user) {
-		userNameElement.textContent = user.first_name
-	} else {
-		userNameElement.textContent = 'Guest'
-	}
-})
+    if (userData) {
+        if (userData.username && userData.username.startsWith('@')) {
+            name = userData.username; // присвоюємо ім'я з username
+        } else if (userData.first_name) {
+            name = userData.first_name; // присвоюємо ім'я з first_name
+        } else {
+            name = 'error'; // якщо не вдалося знайти ім'я, присвоюємо 'error'
+        }
+
+        // оновлюємо тексти за допомогою функції updateUserText
+        updateUserText(".user-name", name);
+        
+    } else {
+        name = 'error'; // якщо немає даних про користувача, присвоюємо 'error'
+        // оновлюємо тексти за допомогою функції updateUserText
+        updateUserText(".user-name", name);
+        
+    }
+});
 
 
 document.addEventListener('DOMContentLoaded', function () {

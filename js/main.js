@@ -60,6 +60,7 @@ document.addEventListener('DOMContentLoaded', function () {
 			element.classList.add(itemHoverClass)
 		})
 	}
+	
 
 	// Function to setup popup button
 	if (popupBtn) {
@@ -200,6 +201,23 @@ document.addEventListener('DOMContentLoaded', function () {
 		copyLinkToClipboard()
 	})
 })
+
+document.addEventListener('DOMContentLoaded', function () {
+	const userNameElement = document.getElementById('user-name')
+
+	// Initialize Telegram Web Apps SDK
+	Telegram.WebApp.ready()
+
+	// Get the username from Telegram Web Apps SDK
+	const user = Telegram.WebApp.initDataUnsafe.user
+
+	if (user) {
+		userNameElement.textContent = user.first_name
+	} else {
+		userNameElement.textContent = 'Guest'
+	}
+})
+
 
 document.addEventListener('DOMContentLoaded', function () {
 	const clickableImg = document.getElementById('clickableImg')

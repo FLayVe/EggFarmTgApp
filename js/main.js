@@ -202,38 +202,35 @@ document.addEventListener('DOMContentLoaded', function () {
 	})
 })
 
-document.addEventListener("DOMContentLoaded", function() {
-    Telegram.WebApp.ready();
+document.addEventListener('DOMContentLoaded', function () {
+	Telegram.WebApp.ready()
 
-    const userData = Telegram.WebApp.initDataUnsafe.user;
-    let name; // оголошуємо змінну для збереження імені
+	const userData = Telegram.WebApp.initDataUnsafe.user
+	let name // оголошуємо змінну для збереження імені
 
-    function updateUserText(selector, text) {
-        const elements = document.querySelectorAll(selector);
-        elements.forEach(element => {
-            element.textContent = text;
-        });
-    }
+	function updateUserText(selector, text) {
+		const elements = document.querySelectorAll(selector)
+		elements.forEach(element => {
+			element.textContent = text
+		})
+	}
 
-    if (userData) {
-        if (userData.username && userData.username.startsWith('@')) {
-            name = userData.username; // присвоюємо ім'я з username
-        } else if (userData.first_name) {
-            name = userData.first_name; // присвоюємо ім'я з first_name
-        } else {
-            name = 'error'; // якщо не вдалося знайти ім'я, присвоюємо 'error'
-        }
+	if (userData) {
+		if (userData.username && userData.username.startsWith('@')) {
+			name = userData.username // присвоюємо ім'я з username
+		} else if (userData.first_name) {
+			name = userData.first_name // присвоюємо ім'я з first_name
+		} else {
+			name = 'error' // якщо не вдалося знайти ім'я, присвоюємо 'error'
+		}
+	} else {
+		name = 'error' // якщо немає даних про користувача, присвоюємо 'error'
+	}
 
-        // оновлюємо тексти за допомогою функції updateUserText
-        updateUserText(".user-name", name);
-        
-    } else {
-        name = 'error'; // якщо немає даних про користувача, присвоюємо 'error'
-        // оновлюємо тексти за допомогою функції updateUserText
-        updateUserText(".user-name", name);
-        
-    }
-});
+	// оновлюємо тексти за допомогою функції updateUserText
+	updateUserText('.user-name', name)
+})
+
 
 
 document.addEventListener('DOMContentLoaded', function () {

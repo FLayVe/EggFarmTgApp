@@ -34,14 +34,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
 	clickableImg.addEventListener('touchstart', function (event) {
 		if (event.touches.length <= 3) {
-			const number = 2000
-			balance += event.touches.length * number
-			updateBalanceDisplay(balance)
-			localStorage.setItem('balance', balance)
+			const incrementPerTouch = 14
+			const newBalance = balance + event.touches.length * incrementPerTouch
+
+			animateBalanceChange(balance, newBalance)
+			localStorage.setItem('balance', newBalance)
+			balance = newBalance // Update the global balance variable
 
 			Array.from(event.touches).forEach(touch => {
 				const numberElement = document.createElement('div')
-				numberElement.textContent = `+${number}`
+				numberElement.textContent = `+${incrementPerTouch}`
 				numberElement.classList.add('number')
 
 				const rect = clickableImg.getBoundingClientRect()
@@ -58,6 +60,21 @@ document.addEventListener('DOMContentLoaded', function () {
 			event.preventDefault()
 		}
 	})
+
+	function animateBalanceChange(oldBalance, newBalance) {
+		const duration = 500 // Duration of animation in milliseconds
+		const difference = newBalance - oldBalance
+		let stepTime = duration / difference
+		let currentBalance = oldBalance
+
+		const timer = setInterval(function () {
+			currentBalance += 1
+			updateBalanceDisplay(currentBalance)
+			if (currentBalance >= newBalance) {
+				clearInterval(timer)
+			}
+		}, Math.max(25, stepTime)) // Prevents too fast increments
+	}
 
 	function updateBalanceDisplay(balance) {
 		const formattedBalance = balance.toLocaleString('en-US').replace(/,/g, ' ')
@@ -80,7 +97,6 @@ document.addEventListener('DOMContentLoaded', function () {
 	if (!isMobileDevice()) {
 		qrCodeContainer.style.display = 'block'
 		contentContainer.style.display = 'none'
-
 	} else {
 		qrCodeContainer.style.display = 'none'
 		contentContainer.style.display = 'block'
@@ -126,9 +142,6 @@ document.addEventListener('DOMContentLoaded', function () {
 	// Ініціалізуємо таймер відразу
 	updateTimer()
 })
-
-
-
 
 document.addEventListener('DOMContentLoaded', function () {
 	// Cached DOM elements

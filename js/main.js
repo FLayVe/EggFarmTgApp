@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 	clickableImg.addEventListener('touchstart', function (event) {
 		if (event.touches.length <= 3) {
-			const number = 15000
+			const number = 2000
 			balance += event.touches.length * number
 			updateBalanceDisplay(balance)
 			localStorage.setItem('balance', balance)

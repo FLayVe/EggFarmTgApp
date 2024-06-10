@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 	clickableImg.addEventListener('touchstart', function (event) {
 		if (event.touches.length <= 3) {
-			const number = 5
+			const number = 15000
 			balance += event.touches.length * number
 			updateBalanceDisplay(balance)
 			localStorage.setItem('balance', balance)
@@ -91,8 +91,13 @@ document.addEventListener('DOMContentLoaded', function () {
 	const timerElement = document.getElementById('timer')
 
 	// Задаємо початковий час у секундах: 30 днів, 12 годин, 8 хвилин, 39 секунд
-	const initialTimeInSeconds = 28 * 24 * 60 * 60 + 12 * 60 * 60 + 8 * 60 + 39
-	let timeRemaining = initialTimeInSeconds
+	const initialTimeInSeconds = 30 * 24 * 60 * 60 + 12 * 60 * 60 + 8 * 60 + 39
+
+	// Отримуємо збережений час з localStorage або використовуємо початковий час
+	let timeRemaining =
+		localStorage.getItem('timeRemaining') !== null
+			? parseInt(localStorage.getItem('timeRemaining'), 10)
+			: initialTimeInSeconds
 
 	function formatTime(seconds) {
 		const days = Math.floor(seconds / (24 * 60 * 60))
@@ -112,6 +117,8 @@ document.addEventListener('DOMContentLoaded', function () {
 		} else {
 			timeRemaining = initialTimeInSeconds // Перезапуск таймера
 		}
+		// Зберігаємо залишок часу в localStorage
+		localStorage.setItem('timeRemaining', timeRemaining)
 	}
 
 	setInterval(updateTimer, 1000) // Оновлення таймера кожну секунду
@@ -119,6 +126,7 @@ document.addEventListener('DOMContentLoaded', function () {
 	// Ініціалізуємо таймер відразу
 	updateTimer()
 })
+
 
 
 
@@ -323,55 +331,3 @@ document.addEventListener('DOMContentLoaded', function () {
 		copyLinkToClipboard()
 	})
 })
-
-
-
-// document.addEventListener('DOMContentLoaded', function () {
-// 	const clickableImg = document.getElementById('clickableImg')
-// 	const balanceValue = document.getElementById('balanceValue')
-// 	const balanceTextElements = document.querySelectorAll('.balance__text')
-
-// 	// Initialize the balance from local storage or set to 0 if none exists
-// 	let balance = parseInt(localStorage.getItem('balance')) || 0
-// 	updateBalanceDisplay(balance)
-
-// 	clickableImg.addEventListener('touchstart', function (event) {
-// 		if (event.touches.length <= 3) {
-// 			// Check if 1 to 3 fingers are touching the screen
-// 			const number = 5 // Fixed increment value
-// 			balance += event.touches.length * number // Increment balance by number of touches * 5
-// 			updateBalanceDisplay(balance)
-// 			localStorage.setItem('balance', balance) // Save the updated balance to local storage
-
-// 			Array.from(event.touches).forEach(touch => {
-// 				// Create and animate the number element for each touch point
-// 				const numberElement = document.createElement('div')
-// 				numberElement.textContent = `+${number}`
-// 				numberElement.classList.add('number')
-
-// 				// Calculate the position of the touch relative to the image
-// 				const rect = clickableImg.getBoundingClientRect()
-// 				numberElement.style.left = `${touch.clientX - rect.left}px`
-// 				numberElement.style.top = `${touch.clientY - rect.top}px`
-
-// 				// Append the number element to the parent container
-// 				clickableImg.parentElement.appendChild(numberElement)
-
-// 				// Remove the element after animation ends
-// 				numberElement.addEventListener('animationend', function () {
-// 					numberElement.remove()
-// 				})
-// 			})
-
-// 			// Prevent default action to avoid triggering other touch events
-// 			event.preventDefault()
-// 		}
-// 	})
-
-// 	function updateBalanceDisplay(balance) {
-// 		balanceValue.textContent = balance
-// 		balanceTextElements.forEach(element => {
-// 			element.textContent = balance
-// 		})
-// 	}
-// })

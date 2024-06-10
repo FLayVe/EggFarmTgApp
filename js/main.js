@@ -187,7 +187,7 @@ document.addEventListener('DOMContentLoaded', function () {
 				element.classList.add(itemHoverClass)
 			})
 		}
-
+		
 		if (popupBtn) {
 			popupBtn.addEventListener('click', function () {
 				overlay.style.display = 'none'
@@ -321,3 +321,4 @@ document.addEventListener('DOMContentLoaded', function () {
 		})
 	}
 })
+

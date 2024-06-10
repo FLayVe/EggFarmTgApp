@@ -24,10 +24,10 @@
 <body>
     <div class="qrcode" id="qrCode">
         <h2>Play on your mobile<h2>
-                <a class="qrCode" href="https://t.me/ChickEggFarmBot">
-                    <img src="./images/qrcode.png" alt="qr-code">
-                </a>
-                <a class="qrcode__link" href="https://t.me/ChickEggFarmBot">@ChickEggFarmBot</a>
+        <a class="qrCode" href="https://t.me/ChickEggFarmBot">
+            <img src="./images/qrcode.jpg" alt="qr-code">
+        </a>
+        <a class="qrcode__link" href="https://t.me/ChickEggFarmBot">@ChickEggFarmBot</a>
     </div>
     <main class="main" id="content">
         <section class="preloader" id="preloader">
@@ -41,6 +41,11 @@
                 </div>
             </div>
         </section>
+        <!-- <div class="video-background">
+            <video class="bg-video" autoplay loop muted playsinline>
+                <source src="./images/bg-video.mp4" type="video/mp4">
+            </video>
+        </div> -->
         <section class="home page" id="home">
             <header class="header">
                 <div class="container">
@@ -154,7 +159,7 @@
                                 </svg>
                             </div>
                             <div class="mine__item-info">
-                                <div class="mine__item-title">
+                                <div class="mine__item-title" id="grain-title">
                                     Golden Grain
                                 </div>
                                 <div class="mine__item-nums">
@@ -190,7 +195,7 @@
                                 </svg>
                             </div>
                             <div class="mine__item-info">
-                                <div class="mine__item-title">
+                                <div class="mine__item-title incubators-title">
                                     Magic incubators
                                 </div>
                                 <div class="mine__item-nums">
@@ -223,7 +228,7 @@
                                 </svg>
                             </div>
                             <div class="mine__item-info">
-                                <div class="mine__item-title">
+                                <div class="mine__item-title" id="vitamins-title">
                                     Vitamins "Superpower"
                                 </div>
                                 <div class="mine__item-nums">
@@ -256,7 +261,7 @@
                                 </svg>
                             </div>
                             <div class="mine__item-info">
-                                <div class="mine__item-title">
+                                <div class="mine__item-title" id="trainer-title">
                                     Trainer for wings
                                 </div>
                                 <div class="mine__item-nums">
@@ -289,7 +294,7 @@
                                 </svg>
                             </div>
                             <div class="mine__item-info">
-                                <div class="mine__item-title">
+                                <div class="mine__item-title" id="elixir-title">
                                     Elixir of youth
                                 </div>
                                 <div class="mine__item-nums">
@@ -322,7 +327,7 @@
                                 </svg>
                             </div>
                             <div class="mine__item-info">
-                                <div class="mine__item-title">
+                                <div class="mine__item-title" id="level-title">
                                     Level up
                                     <hr> 1KK
                                 </div>
@@ -700,7 +705,6 @@
     </main>
 
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="js/main.js"></script>
 </body>

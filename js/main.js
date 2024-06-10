@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', function () {
 	})
 
 	function animateBalanceChange(oldBalance, newBalance) {
-		const duration = 500 // Duration of animation in milliseconds
+		const duration = 400 // Duration of animation in milliseconds
 		const difference = newBalance - oldBalance
 		let stepTime = duration / difference
 		let currentBalance = oldBalance
@@ -106,8 +106,8 @@ document.addEventListener('DOMContentLoaded', function () {
 document.addEventListener('DOMContentLoaded', function () {
 	const timerElement = document.getElementById('timer')
 
-	// Задаємо початковий час у секундах: 30 днів, 12 годин, 8 хвилин, 39 секунд
-	const initialTimeInSeconds = 30 * 24 * 60 * 60 + 12 * 60 * 60 + 8 * 60 + 39
+	// Задаємо початковий час у секундах: 28 днів
+	const initialTimeInSeconds = 28 * 24 * 60 * 60
 
 	// Отримуємо збережений час з localStorage або використовуємо початковий час
 	let timeRemaining =
@@ -141,9 +141,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
 	// Ініціалізуємо таймер відразу
 	updateTimer()
+	
 })
 
-document.addEventListener('DOMContentLoaded', function () {
+
+window.onload = function () {
 	// Cached DOM elements
 	const overlay = document.getElementById('myOverlay')
 	const mainElement = document.querySelector('main')
@@ -258,13 +260,16 @@ document.addEventListener('DOMContentLoaded', function () {
 	})
 
 	// Preloader logic
-	window.onload = function () {
+	if (/Mobi|Android/i.test(navigator.userAgent)) {
 		preloader.style.display = 'block'
 		setTimeout(function () {
 			handleButtonClick(document.querySelector('.home-btn'))
 			preloader.style.display = 'none'
 			menu.style.display = 'block'
 		}, 1450)
+	} else {
+		handleButtonClick(document.querySelector('.home-btn'))
+		menu.style.display = 'block'
 	}
 
 	// Setup hover and click for elements
@@ -304,9 +309,11 @@ document.addEventListener('DOMContentLoaded', function () {
 			handleLinkClick('boost')
 		})
 	})
-})
+}
+
 
 document.addEventListener('DOMContentLoaded', function () {
+	
 	const copyButton = document.getElementById('friends__btn')
 	const link = document.getElementById('friends__link')
 	const customAlert = document.getElementById('customAlert')

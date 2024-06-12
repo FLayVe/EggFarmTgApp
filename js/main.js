@@ -322,3 +322,8 @@ document.addEventListener('DOMContentLoaded', function () {
 	}
 })
 
+document.getElementById('tap').addEventListener('click', function () {
+		navigator.vibrate(200)
+})
+
+

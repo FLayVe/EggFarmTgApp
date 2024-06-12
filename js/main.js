@@ -322,8 +322,12 @@ document.addEventListener('DOMContentLoaded', function () {
 	}
 })
 
-// document.getElementById('tap').addEventListener('click', function () {
-// 		navigator.vibrate(20)
-// })
+document.getElementById('friends__link').addEventListener('click', function () {
+	navigator.vibrate(100)
+})
+
+document.getElementById('friends__btn').addEventListener('click', function () {
+	navigator.vibrate(100)
+})
 
 

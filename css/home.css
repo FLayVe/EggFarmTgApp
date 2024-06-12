@@ -275,9 +275,11 @@ button {
 }
 #qrCode img {
 	max-width: 100%;
-	margin: 0 auto;
+	width: 90%;
+	height: 90%;
+	margin: 0 auto 10px;
 	padding: 5px;
-	border-radius: 15px;
+	border-radius: 25px;
 }
 
 #clickableDiv {
@@ -346,8 +348,8 @@ button {
 
 @media (max-width: 375px) {
 	.tap__chick-img {
-		max-width: 290px;
-		max-height: 290px;
+		max-width: 220px;
+		max-height: 220px;
 	}
 	.info__item {
 		width: 95px;
@@ -382,8 +384,8 @@ button {
 } */
 
 .tap__chick-img {
-	width: 310px;
-	height: 310px;
+	width: 265px;
+	height: 265px;
 	border-radius: 326px;
 	border: 3px solid #fba31d;
 	background: #000;

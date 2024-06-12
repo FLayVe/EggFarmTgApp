@@ -323,11 +323,11 @@ document.addEventListener('DOMContentLoaded', function () {
 })
 
 document.getElementById('friends__link').addEventListener('click', function () {
-	navigator.vibrate(100)
+	navigator.vibrate(50)
 })
 
 document.getElementById('friends__btn').addEventListener('click', function () {
-	navigator.vibrate(100)
+	navigator.vibrate(50)
 })
 
 

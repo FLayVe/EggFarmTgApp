@@ -394,7 +394,7 @@ button {
 }
 
 .get {
-	padding-top: 20px;
+	padding-top: 25px;
 	margin-bottom: 130px;
 }
 
@@ -653,6 +653,7 @@ button {
 
 #customAlert {
 	position: fixed;
+	text-align: center;
 	color: #c0c0c0;
 	font-family: Inter;
 	font-size: 12px;

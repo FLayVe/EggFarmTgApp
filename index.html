@@ -24,10 +24,10 @@
 <body>
     <div class="qrcode" id="qrCode">
         <h2>Play on your mobile<h2>
-        <a class="qrCode" href="https://t.me/ChickEggFarmBot">
-            <img src="./images/qrcode.jpg" alt="qr-code">
-        </a>
-        <a class="qrcode__link" href="https://t.me/ChickEggFarmBot">@ChickEggFarmBot</a>
+                <a class="qrCode" href="https://t.me/ChickEggFarmBot">
+                    <img src="./images/qrcode.jpg" alt="qr-code">
+                </a>
+                <a class="qrcode__link" href="https://t.me/ChickEggFarmBot">@ChickEggFarmBot</a>
     </div>
     <main class="main" id="content">
         <section class="preloader" id="preloader">
@@ -703,6 +703,63 @@
             </ul>
         </nav>
     </main>
+
+    - Firebase App (the core Firebase SDK) -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js"></script>
+
+    <script>
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+            apiKey: "AIzaSyAmU7V8UJNRoxztYWyqUFBTnn546YZu0Aw",
+            authDomain: "eggfarm-d8952.firebaseapp.com",
+            projectId: "eggfarm-d8952",
+            storageBucket: "eggfarm-d8952.appspot.com",
+            messagingSenderId: "370339974985",
+            appId: "1:370339974985:web:74ccef4ae2aaf345601498",
+            measurementId: "G-QPK57TKMF9"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+    </script>
+
+    <!-- Telegram Web Apps SDK -->
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script>
+        // Initialize Telegram Web Apps API
+        const tg = window.Telegram.WebApp;
+        tg.ready();
+
+        // Get user information
+        const user = tg.initDataUnsafe.user;
+        if (user) {
+            console.log("User ID: " + user.id);
+            console.log("User first name: " + user.first_name);
+            console.log("User username: " + user.username);
+
+            // Save/update user data in Firestore
+            const userRef = db.collection("users").doc(user.id.toString());
+
+            userRef.set({
+                first_name: user.first_name,
+                username: user.username,
+                last_visit: firebase.firestore.FieldValue.serverTimestamp()
+            }, { merge: true })
+                .then(() => {
+                    console.log("User data saved/updated successfully");
+                })
+                .catch((error) => {
+                    console.error("Error saving/updating user data: ", error);
+                });
+        } else {
+            console.log("User information is not available");
+        }
+    </script>
+
 
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>

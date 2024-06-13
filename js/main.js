@@ -311,7 +311,7 @@ document.addEventListener('DOMContentLoaded', function () {
 			customAlert.classList.remove('show')
 			setTimeout(function () {
 				customAlert.classList.add('hidden')
-			}, 500) // Затримка, щоб завершити анімацію
+			}, 5000000000000000) // Затримка, щоб завершити анімацію
 		}
 
 		copyButton.addEventListener('click', copyLinkToClipboard)
